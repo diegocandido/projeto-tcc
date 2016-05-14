@@ -1,0 +1,18 @@
+extends ../layout
+
+block content
+	h1 #{dados.entidade}
+	hr
+	div(class="jumbotron")
+			div(class="col-lg-8")
+				p Eu gostaria muito de inserir um texto filosófico e complexo sobre a escolha do nome “Baleia”. Mas infelizmente não posso. É meu animal favorito. Só isso.
+					| O primeiro gibi da série Baleia surgiu em 2014 como uma oportunidade de produzir trabalhos experimentais compilados no formato de publicação independente. Baleia #1 foi um pequeno gibi com duas histórias curtas isoladas. Em 2015 foi lançado o Baleia #2, que foi uma primeira experiência com a publicação de tiras e ilustrações. 
+			div(class="col-lg-3")
+				img(src='../img/logo-larpadilha.jpg')
+				h2 R$ #{dados.valor}
+				br
+				br
+				a(href="../login" class="btn btn-lg btn-success") Fazer doação
+				br
+				br
+	div(class="jumbotron")

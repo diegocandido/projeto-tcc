@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+	h1 Doações
+	br
+	br
+	if messages.erro
+		div(class="alert alert-danger")
+			p #{messages.erro}
+		br
+	if messages.info
+		div(class="alert alert-success")
+			p #{messages.info}
+		br
+	if lista.length > 0
+		table(class="table table-striped")
+			thead
+				tr
+					th Logo:
+					th Entidade:
+					th Valor:
+			tbody
+				each valor in lista
+					tr
+						td #{session._id}
+						td #{valor.entidade}
+						td 
+							input(type="number", class="form-control", name="quantity", min="1", placeholder="Valor a doar")
+		a(href="#",class="btn btn-success") Doar
+	else
+		p - QUE ZERO
+			
