@@ -25,10 +25,10 @@ block content
 						tr
 							td
 								p Foto
-									input(type="hidden", name="idusuario", value="#{session._id}")
+									input(type="hidden", name="_usuario", value="#{session._id}")
 							td 
 								p #{valor.entidade}
-									input(type="hidden", name="identidade", value="#{valor.id}")
+									input(type="hidden", name="_entidades", value="#{valor.id}")
 							td 
 								input(type="text", class="form-control", name="valordoado")
 			button(type="submit", class="btn btn-success") Doar

@@ -17,8 +17,8 @@ module.exports = function(app) {
 		},
 		post: function(req, res) {
 			var model = new Doacao();
-			model.idusuario = req.body.idusuario;
-			model.identidade = req.body.identidade;
+			model._usuario = req.body._usuario;
+			model._entidades = req.body._entidades;
 			model.valordoado = req.body.valordoado;
 			model.save(function(err) {
 				if (err) {

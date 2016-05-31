@@ -17,7 +17,7 @@ block content
 		table(class="table table-striped")
 			thead
 				tr
-					th ID:
+					th Valor Doado:
 					th Nome:
 					th E-mail:
 					th Data:
@@ -25,7 +25,7 @@ block content
 			tbody
 				each valor in lista
 					tr
-						td #{valor._id}
+						td #{valor.valordoado}
 						td #{valor.nome}
 						td #{valor.email}
 						td #{moment(valor.data_cad).format('DD/MM/YYYY HH:MM:ss')}
