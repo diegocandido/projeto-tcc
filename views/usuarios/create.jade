@@ -12,14 +12,32 @@ block content
 		br
 	form(method="POST", action="/usuarios/create", role="form")
 		div(class="form-group")
-			label Nome
-			input(type="text", class="form-control", name="nome", value="#{user.nome || ''}" placeholder="Nome", autofocus, required)
+			label Nome Complemento
+			input(type="text", class="form-control", name="nome", value="#{user.nome || ''}" placeholder="Nome Completo", autofocus, required)
+		div(class="form-group")
+			label CPF
+			input(type="text", class="form-control", name="cpf", value="#{user.cpf || ''}" placeholder="000.000.000-00", required)
+		div(class="form-group")
+			label Endereço
+			input(type="text", class="form-control", name="endereco", value="#{user.endereco || ''}" placeholder="Rua/Avenida", required)
+		div(class="form-group")
+			label Número
+			input(type="text", class="form-control", name="numero", value="#{user.numero || ''}" placeholder="000", required)
+		div(class="form-group")
+			label Complemento
+			input(type="text", class="form-control", name="complemento", value="" placeholder="Apto. X ou Casa X", required)
+		div(class="form-group")
+			label Bairro
+			input(type="text", class="form-control", name="bairro", value="#{user.bairro || ''}" placeholder="Bairro", required)
+		div(class="form-group")
+			label Cep
+			input(type="text", class="form-control", name="cep", value="#{user.cep || ''}" placeholder="95600-000", required)
+		div(class="form-group")
+			label Cidade
+			input(type="text", class="form-control", name="cidade", value="#{user.cidade || ''}" placeholder="Cidade", required)				
 		div(class="form-group")
 			label E-mail
 			input(type="email", class="form-control", name="email", value="#{user.email || ''}" placeholder="E-mail", required)
-		div(class="form-group")
-			label Site
-			input(type="text", class="form-control", name="site", value="#{user.site || 'http://'}" placeholder="Site")
 		div(class="form-group")
 			label Senha
 			input(type="password", class="form-control", name="password", placeholder="Senha", required)

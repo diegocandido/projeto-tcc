@@ -22,14 +22,15 @@ module.exports = function(app) {
 						req.flash('erro', 'Erro ao entrar no sistema: ' + err);
 						res.redirect('login');
 					} else if (!data) {
-						req.flash('erro', 'E-mail não encontrado!');
-						res.redirect('login');
+						req.flash('erro',
+							'E-mail não cadastrado, faça o cadastro abaixo!');
+						res.redirect('usuarios/create');
 					} else if (!usuario.validPassword(password, data.password)) {
 						req.flash('erro', 'Senha não confere!');
 						res.redirect('login');
 					} else {
 						req.session.usuario = data;
-						res.redirect('doar/index');
+						res.redirect('doar/index/' + data._id);
 					}
 				});
 			} else {

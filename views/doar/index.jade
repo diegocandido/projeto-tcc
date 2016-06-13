@@ -12,26 +12,52 @@ block content
 		div(class="alert alert-success")
 			p #{messages.info}
 		br
-	if lista.length > 0
-		form(method="POST", action="/doar/index/", role="form")
+	if listar.length > 0
+		p Doação Já Efetuada
+			table(class="table table-striped")
+				thead
+					tr
+						th Logo:
+						th Entidade:
+						th Data da doação
+						th Valor:
+						th
+				tbody
+					each valor in listar
+						tr
+							td
+								p Logo
+							td 
+								p #{valor._entidades}
+							td
+								p #{moment(valor.data).format('DD/MM/YYYY HH:MM:ss')}
+							td
+								p R$ #{valor.valordoado}
+							td
+								a(href="#", class="btn btn-info")
+									span(class="glyphicon glyphicon-search")
+								span &nbsp;
+	else
+		p Faça a sua doação:
+		form(method="POST", action="/doar/index/#{session._id}", role="form")
 			table(class="table table-striped")
 				thead
 					tr
 						th Logo:
 						th Entidade:
 						th Valor:
+						th
 				tbody
 					each valor in lista
 						tr
 							td
-								p Foto
-									input(type="hidden", name="_usuario", value="#{session._id}")
+								p Logo
+									input(type="hidden", name="_id", value="#{session._id}")
 							td 
 								p #{valor.entidade}
-									input(type="hidden", name="_entidades", value="#{valor.id}")
+									input(type="hidden", name="doacoes[_entidades]", value="#{valor.entidade}")
 							td 
-								input(type="text", class="form-control", name="valordoado")
-			button(type="submit", class="btn btn-success") Doar
-	else
-		p - QUE ZERO
+								input(type="text", class="form-control", name="doacoes[valordoado]")
+							td
+								button(type="submit", class="btn btn-success") Doar	
 			

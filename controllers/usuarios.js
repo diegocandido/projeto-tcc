@@ -30,10 +30,15 @@ module.exports = function(app) {
 			if (validacao(req, res)) {
 				var model = new Usuario();
 				model.nome = req.body.nome;
+				model.cpf = req.body.cpf;
+				model.endereco = req.body.endereco;
+				model.numero = req.body.numero;
+				model.complemento = req.body.complemento;
+				model.bairro = req.body.bairro;
+				model.cep = req.body.cep;
+				model.cidade = req.body.cidade;
 				model.email = req.body.email;
-				model.site = req.body.site;
 				model.password = model.generateHash(req.body.password);
-
 				Usuario.findOne({
 					'email': model.email
 				}, function(err, data) {
@@ -70,7 +75,8 @@ module.exports = function(app) {
 					res.redirect('/usuarios');
 				} else {
 					res.render('usuarios/show', {
-						dados: dados
+						dados: dados,
+						lista: dados.doacoes
 					});
 				}
 			});

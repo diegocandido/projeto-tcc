@@ -2,10 +2,46 @@ extends ../layout
 
 block content
 	br
-		h1 #{dados.entidade}
+	h1 Dados do Doador
 	hr
-	p
-		b Total: #{dados.valor}
+	div(class="col-lg-4")
+		p
+			b Nome: #{dados.nome}
+		p
+			b CPF: #{dados.cpf}
+	div(class="col-lg-4")
+		p
+			b Endereço: #{dados.endereco}
+		p
+			b Número: #{dados.numero}
+		p
+			b Bairro: #{dados.bairro}
+		p
+			b Complemento: #{dados.complemento}
+		p
+			b Cep: #{dados.cep}
+		p
+			b Cidade: #{dados.cidade}
+	div(class="col-lg-4")
+		p
+			b E-mail: #{dados.email}							
+		p
+			b Data de Cadastro: #{moment(dados.data_cad).format('DD/MM/YYYY HH:MM:ss')}
 	br
-	br
-	a(href="/") Voltar
+	div(class="col-lg-12")
+		h2 Doações
+		hr
+		table(class="table table-striped")
+			thead
+				tr
+					th Entidade:
+					th Valor:
+					th Data das doações:
+			tbody
+				each valor in lista
+					tr
+						td #{valor._entidades}
+						td R$ #{valor.valordoado}
+						td #{moment(valor.data).format('DD/MM/YYYY HH:MM:ss')}			
+		br
+		br

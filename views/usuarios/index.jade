@@ -17,18 +17,18 @@ block content
 		table(class="table table-striped")
 			thead
 				tr
-					th Valor Doado:
-					th Nome:
-					th E-mail:
 					th Data:
+					th Nome:
+					th CPF:
+					th Valor:
 					th Ações:
 			tbody
 				each valor in lista
 					tr
-						td #{valor.valordoado}
-						td #{valor.nome}
-						td #{valor.email}
 						td #{moment(valor.data_cad).format('DD/MM/YYYY HH:MM:ss')}
+						td #{valor.nome}
+						td #{valor.cpf}
+						td #{valor.valortotal}
 						td
 							a(href="/usuarios/show/#{valor._id}", class="btn btn-info")
 								span(class="glyphicon glyphicon-search")
