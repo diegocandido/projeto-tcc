@@ -3,14 +3,39 @@ var mongoose = require('mongoose');
 module.exports = function() {
 
 	var entidadesSchema = mongoose.Schema({
-		entidade: {
+		nomedaentidade: {
 			type: String,
-			required: true,
-			trim: true,
-			unique: true
+			trim: true
 		},
-		valor: {
-			type: Number
+		telefone: {
+			type: String,
+		},
+		email: {
+			type: String,
+		},
+		site: {
+			type: String,
+		},
+		cnpj: {
+			type: String,
+		},
+		ie: {
+			type: String,
+		},
+		im: {
+			type: String,
+		},
+		cidade: {
+			type: String,
+		},
+		estado: {
+			type: String,
+		},
+		texto: {
+			type: String,
+		},
+		valortotal: {
+			type: String,
 		},
 		data_cad: {
 			type: Date,

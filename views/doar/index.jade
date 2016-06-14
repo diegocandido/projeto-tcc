@@ -54,10 +54,34 @@ block content
 								p Logo
 									input(type="hidden", name="_id", value="#{session._id}")
 							td 
-								p #{valor.entidade}
-									input(type="hidden", name="doacoes[_entidades]", value="#{valor.entidade}")
+								p #{valor.nomedaentidade}
+									input(type="hidden", name="doacoes[_entidades]", value="#{valor.nomedaentidade}")
 							td 
-								input(type="text", class="form-control", name="doacoes[valordoado]")
-							td
-								button(type="submit", class="btn btn-success") Doar	
+								input(type="text", class="form-control input", name="doacoes[valordoado]")
+							td		
+		tr
+		div(class="col-lg-4")
+			p
+		div(class="col-lg-4")
+			p
+		div(class="col-lg-4")
+			p
+				input(type="text", class="form-control input", id="resultado")
+			p
+				button(type="submit", class="btn btn-success", id="somar") SOMAR
+				&emsp;
+				button(type="submit", class="btn btn-success") Gerar Boleto
+
+block scripts
+	script(type="text/javascript").
+		$(document).ready(function() {
+			$("#somar").click(function(){
+				var total = 0;
+					$('.input').each(function(){
+						var valor = Number($(this).val());
+							if (!isNaN(valor)) total += valor;
+						});
+						$("#resultado").val("R$ "+total.toFixed(2));
+					});
+		});
 			

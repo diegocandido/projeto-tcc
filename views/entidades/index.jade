@@ -1,8 +1,8 @@
 extends ../layout
 
 block content
-	h1 Amigos
-	a(href="/amigos/create",class="btn btn-success") Cadastrar
+	h1 Entidades
+	a(href="/entidades/create",class="btn btn-success") Cadastrar Entidade
 	br
 	br
 	if messages.erro
@@ -17,26 +17,23 @@ block content
 		table(class="table table-striped")
 			thead
 				tr
-					th ID:
-					th Nome:
-					th E-mail:
 					th Data:
+					th Nome:
+					th CNPJ:
+					th Total:
 					th Ações:
 			tbody
 				each valor in lista
 					tr
-						td #{valor._id}
-						td #{valor.nome}
-						td #{valor.email}
 						td #{moment(valor.data_cad).format('DD/MM/YYYY HH:MM:ss')}
+						td #{valor.nomedaentidade}
+						td #{valor.cnpj}
+						td R$ #{valor.valortotal}
 						td
-							a(href="/amigos/show/#{valor._id}", class="btn btn-info")
+							a(href="/entidades/show/#{valor._id}", class="btn btn-info")
 								span(class="glyphicon glyphicon-search")
 							span &nbsp;
-							a(href="/amigos/edit/#{valor._id}", class="btn btn-primary")
+							a(href="/entidades/edit/#{valor._id}", class="btn btn-primary")
 								span(class="glyphicon glyphicon-pencil")
-							span &nbsp;
-							a(href="/contatos/#{valor._id}", class="btn btn-success")
-								span(class="glyphicon glyphicon-plus")
 	else
 		p Nenhum registro encontrado!

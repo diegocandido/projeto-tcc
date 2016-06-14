@@ -1,0 +1,47 @@
+extends ../layout
+
+block content
+	h1 Cadastro de Entidade
+	hr
+	br
+	if messages.erro
+		div(class="alert alert-danger")
+			each msg in messages.erro
+				b= msg
+				br
+		br
+	form(method="POST", action="/entidades/create", role="form")
+		div(class="form-group")
+			label Nome Fantasia
+			input(type="text", class="form-control", name="nomedaentidade", placeholder="", autofocus, required)
+		div(class="form-group")
+			label Telefone
+			input(type="text", class="form-control", name="telefone", placeholder="")
+		div(class="form-group")
+			label E-mail
+			input(type="email", class="form-control", name="email", placeholder="")
+		div(class="form-group")
+			label Site
+			input(type="text", class="form-control", name="site", placeholder="")
+		div(class="form-group")
+			label CNPJ
+			input(type="text", class="form-control", name="cnpj", placeholder="")
+		div(class="form-group")
+			label Inscrição Estadual
+			input(type="text", class="form-control", name="ie", placeholder="")
+		div(class="form-group")
+			label Inscrição Municipal
+			input(type="text", class="form-control", name="im", placeholder="")
+		div(class="form-group")
+			label Cidade
+			input(type="text", class="form-control", name="cidade", placeholder="")
+		div(class="form-group")
+			label Estado
+			input(type="text", class="form-control", name="estado", placeholder="")
+		div(class="form-group")
+			label Texto sobre a entidade 
+			textarea(type="text", class="form-control", name="texto", placeholder="")
+		button(type="submit", class="btn btn-success") Salvar
+	br
+	br
+	a(href="/entidades") Voltar

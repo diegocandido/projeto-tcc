@@ -34,7 +34,7 @@ module.exports = function(app) {
 					}
 				});
 			} else {
-				res.redirect('login/index');
+				res.redirect('/login');
 			}
 		},
 
