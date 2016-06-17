@@ -1,9 +1,11 @@
 extends ../layout
 
 block content
-	h1 Entidades
-	a(href="/entidades/create",class="btn btn-success") Cadastrar Entidade
 	br
+	a(href="/entidades/create",class="btn btn-lg btn-success") Cadastrar Entidade
+	&nbsp; &nbsp;
+	a(href="/usuarios",class="btn btn-lg btn-info") Usuários
+	h1 Lista de Entidades
 	br
 	if messages.erro
 		div(class="alert alert-danger")
@@ -37,3 +39,6 @@ block content
 								span(class="glyphicon glyphicon-pencil")
 	else
 		p Nenhum registro encontrado!
+	br
+	br
+	a(href="/usuarios") Voltar

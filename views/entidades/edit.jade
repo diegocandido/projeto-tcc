@@ -1,0 +1,47 @@
+extends ../layout
+
+block content
+	h1 Atualizar Entidades
+	hr
+	br
+	if messages.erro
+		div(class="alert alert-danger")
+			each msg in messages.erro
+				b= msg
+				br
+		br
+	form(method="POST", action="/entidades/edit/#{dados._id}", role="form")
+		div(class="form-group")
+			label Nome Fantasia
+			input(type="text", class="form-control", name="nomedaentidade", value="#{dados.nomedaentidade}", placeholder="Nome da Entidade", autofocus, required)
+		div(class="form-group")
+			label Telefone
+			input(type="text", class="form-control", name="telefone", placeholder="", value="#{dados.telefone}")
+		div(class="form-group")
+			label E-mail
+			input(type="email", class="form-control", name="email", placeholder="", value="#{dados.email}")
+		div(class="form-group")
+			label Site
+			input(type="text", class="form-control", name="site", placeholder="", value="#{dados.site}")
+		div(class="form-group")
+			label CNPJ
+			input(type="text", class="form-control", name="cnpj", placeholder="", value="#{dados.cnpj}")
+		div(class="form-group")
+			label Inscrição Estadual
+			input(type="text", class="form-control", name="ie", placeholder="", value="#{dados.ie}")
+		div(class="form-group")
+			label Inscrição Municipal
+			input(type="text", class="form-control", name="im", placeholder="", value="#{dados.im}")
+		div(class="form-group")
+			label Cidade
+			input(type="text", class="form-control", name="cidade", placeholder="", value="#{dados.cidade}")
+		div(class="form-group")
+			label Estado
+			input(type="text", class="form-control", name="estado", placeholder="", value="#{dados.estado}")
+		div(class="form-group")
+			label Texto sobre a entidade 
+			textarea(type="text", class="form-control", name="texto", placeholder="", value="#{dados.texto}")
+		button(type="submit", class="btn btn-success") Salvar
+	br
+	br
+	a(href="/usuarios") Voltar

@@ -10,4 +10,8 @@ module.exports = function(app) {
     .post(autenticar, entidade.post);
 
   app.route('/entidades/:id').get(entidade.show);
+
+  app.route('/entidades/edit/:id')
+    .get(autenticar, entidade.edit)
+    .post(entidade.update);
 }

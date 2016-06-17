@@ -40,7 +40,7 @@ module.exports = function(app) {
       model.cnpj = req.body.cnpj;
       model.ie = req.body.ie;
       model.im = req.body.im;
-      model.cidade = req.body.cidade;
+      model.estado = req.body.estado;
       model.texto = req.body.texto;
       model.cidade = req.body.cidade;
       model.save(function(err) {
@@ -53,6 +53,45 @@ module.exports = function(app) {
           req.flash('info', 'Registro cadastrado com sucesso!');
           res.redirect('/entidades');
         }
+      });
+    },
+    edit: function(req, res) {
+      Entidade.findById(req.params.id, function(err, data) {
+        if (err) {
+          req.flash('erro', 'Erro ao editar: ' + err);
+          res.redirect('/entodades');
+        } else {
+          res.render('entidades/edit', {
+            dados: data
+          });
+        }
+      });
+    },
+    update: function(req, res) {
+      Entidade.findById(req.params.id, function(err, data) {
+        var model = data;
+        model.nomedaentidade = req.body.nomedaentidade;
+        model.telefone = req.body.telefone;
+        model.email = req.body.email;
+        model.site = req.body.site;
+        model.cnpj = req.body.cnpj;
+        model.ie = req.body.ie;
+        model.im = req.body.im;
+        model.estado = req.body.estado;
+        model.texto = req.body.texto;
+        model.cidade = req.body.cidade;
+        model.save(function(err) {
+          if (err) {
+            req.flash('erro', 'Erro ao editar: ' + err);
+            res.render('entidades/edit', {
+              user: req.body
+            });
+          } else {
+            req.flash('info',
+              'Registro atualizado com sucesso!');
+            res.redirect('/entidades');
+          }
+        });
       });
     }
   }

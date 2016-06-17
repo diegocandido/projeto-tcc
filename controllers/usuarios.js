@@ -38,6 +38,8 @@ module.exports = function(app) {
 				model.cep = req.body.cep;
 				model.cidade = req.body.cidade;
 				model.email = req.body.email;
+				model.uf = req.body.uf;
+				model.telefone = req.body.telefone;
 				model.password = model.generateHash(req.body.password);
 				Usuario.findOne({
 					'email': model.email

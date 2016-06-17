@@ -8,6 +8,9 @@ module.exports = function() {
 			trim: true
 		},
 		valordoado: {
+			type: Number
+		},
+		status: {
 			type: String
 		},
 		data: {
@@ -50,6 +53,14 @@ module.exports = function() {
 			type: String,
 			trim: true
 		},
+		uf: {
+			type: String,
+			trim: true
+		},
+		telefone: {
+			type: String,
+			trim: true
+		},
 		cidade: {
 			type: String,
 			trim: true
@@ -59,7 +70,7 @@ module.exports = function() {
 			type: String
 		},
 		valortotal: {
-			type: String
+			type: Number
 		},
 		data_cad: {
 			type: Date,

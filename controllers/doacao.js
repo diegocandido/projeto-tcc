@@ -16,15 +16,16 @@ module.exports = function(app) {
 					} else {
 						res.render('doar/index', {
 							lista: dados,
-							listar: dados2.doacoes
+							listar: dados2.doacoes,
+							id: _id
 						});
 					}
 				});
 			});
 		},
-		post: function(req, res) {
-			var _id = req.body._id;
-			Usuario.findById(_id, function(err, dados) {
+		sucesso: function(req, res) {
+			var id = req.params.id;
+			Usuario.findById(req.params.id, function(err, dados) {
 				var contato = req.body.doacoes;
 				dados.doacoes.push(contato);
 				dados.save(function(err) {
@@ -33,7 +34,8 @@ module.exports = function(app) {
 							model: req.body,
 						});
 					}
-					res.render('doar/sucesso');
+					res.render('doar/sucesso' + id);
+					console.log(dados);
 				});
 			});
 		}

@@ -20,6 +20,7 @@ block content
 						th Logo:
 						th Entidade:
 						th Data da doação
+						th Status
 						th Valor:
 						th
 				tbody
@@ -32,6 +33,8 @@ block content
 							td
 								p #{moment(valor.data).format('DD/MM/YYYY HH:MM:ss')}
 							td
+								p #{valor.status}
+							td
 								p R$ #{valor.valordoado}
 							td
 								a(href="#", class="btn btn-info")
@@ -39,7 +42,7 @@ block content
 								span &nbsp;
 	else
 		p Faça a sua doação:
-		form(method="POST", action="/doar/index/#{session._id}", role="form")
+		form(method="POST", action="/doar/sucesso/#{id}", role="form")
 			table(class="table table-striped")
 				thead
 					tr
@@ -52,25 +55,15 @@ block content
 						tr
 							td
 								p Logo
-									input(type="hidden", name="_id", value="#{session._id}")
 							td 
 								p #{valor.nomedaentidade}
 									input(type="hidden", name="doacoes[_entidades]", value="#{valor.nomedaentidade}")
-							td 
+									input(type="hidden", name="doacoes[status]", value="Aguardando confirmação")
+							td
 								input(type="text", class="form-control input", name="doacoes[valordoado]")
-							td		
-		tr
-		div(class="col-lg-4")
-			p
-		div(class="col-lg-4")
-			p
-		div(class="col-lg-4")
-			p
-				input(type="text", class="form-control input", id="resultado")
-			p
-				button(type="submit", class="btn btn-success", id="somar") SOMAR
-				&emsp;
-				button(type="submit", class="btn btn-success") Gerar Boleto
+							td
+								input(type="hidden", class="form-control input", id="resultado", name="valortotal")
+			button(type="submit", class="btn btn-success", id="somar") Gerar Boleto
 
 block scripts
 	script(type="text/javascript").
