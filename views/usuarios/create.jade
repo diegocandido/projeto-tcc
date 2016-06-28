@@ -13,47 +13,47 @@ block content
 	form(method="POST", action="/usuarios/create", role="form")
 		div(class="form-group")
 			label Nome Complemento
-			input(type="text", class="form-control", name="nome", value="#{user.nome || ''}" placeholder="Nome Completo", autofocus, required)
+			input(type="text", class="form-control", name="nome", placeholder="Nome Completo", autofocus)
 		div(class="form-group")
 			label CPF
-			input(type="text", class="form-control", name="cpf", id="cpf", value="#{user.cpf || ''}" placeholder="000.000.000-00", required)
+			input(type="text", class="form-control", name="cpf", id="cpf", placeholder="000.000.000-00")
 		div(class="form-group")
 			label Telefone
-			input(type="text", class="form-control", name="telefone", value="#{user.telefone || ''}" placeholder="(00) 0000-0000", required)
+			input(type="text", class="form-control", name="telefone", placeholder="(00) 0000-0000")
 		div(class="form-group")
 			label Cep
-			input(type="text", class="form-control", name="cep", value="#{user.cep || ''}" placeholder="00000-000", id="cep", size="10", maxlength="9", required)
+			input(type="text", class="form-control", name="cep", placeholder="00000-000", id="cep", size="10", maxlength="9")
 		div(class="form-group")
 			label Endereço
-			input(type="text", class="form-control", name="endereco", id="rua", value="#{user.endereco || ''}" placeholder="Rua/Avenida", required)
+			input(type="text", class="form-control", name="endereco", id="rua", placeholder="Rua/Avenida")
 		div(class="form-group")
 			label Número
-			input(type="text", class="form-control", name="numero", value="#{user.numero || ''}" placeholder="000", required)
+			input(type="text", class="form-control", name="numero", placeholder="000")
 		div(class="form-group")
 			label Complemento
 			input(type="text", class="form-control", name="complemento", value="" placeholder="Apto. X ou Casa X")
 		div(class="form-group")
 			label Bairro
-			input(type="text", class="form-control", name="bairro", id="bairro", value="#{user.bairro || ''}" placeholder="Bairro", required)
+			input(type="text", class="form-control", name="bairro", id="bairro", placeholder="Bairro")
 		div(class="form-group")
 			label Cidade
-			input(type="text", class="form-control", id="cidade", name="cidade", value="#{user.cidade || ''}" placeholder="Cidade", required)
+			input(type="text", class="form-control", id="cidade", name="cidade", placeholder="Cidade")
 		div(class="form-group")
 			label Estado
-			input(type="text", class="form-control", id="uf", name="uf", size="2", value="#{user.cidade || ''}" placeholder="RS", required)							
+			input(type="text", class="form-control", id="uf", name="uf", size="2", placeholder="RS")							
 		div(class="form-group")
 			label E-mail
-			input(type="email", class="form-control", name="email", value="#{user.email || ''}" placeholder="E-mail", required)
+			input(type="email", class="form-control", name="email", placeholder="E-mail")
 		div(class="form-group")
 			label Senha
-			input(type="password", class="form-control", name="password", placeholder="Senha", required)
+			input(type="password", class="form-control", name="password", placeholder="Senha")
 		div(class="form-group")
 			label Confirmar Senha
-			input(type="password", class="form-control", name="password_confirmar", placeholder="Confirmar Senha", required)
+			input(type="password", class="form-control", name="password_confirmar", placeholder="Confirmar Senha")
 		button(type="submit", class="btn btn-success") Salvar
 	br
 	br
-	a(href="/usuarios") Voltar
+	a(href="/") Voltar
 
 block scripts
 	script(type="text/javascript").

@@ -3,7 +3,8 @@ extends ../layout
 block content
 	br
 	a(href="/usuarios",class="btn btn-lg btn-info") Lista de Usuários
-	&nbsp; &nbsp;
+	&nbsp; 
+	&nbsp;
 	h1 Dados do Usuário
 	hr
 	div(class="col-lg-4")
@@ -39,11 +40,36 @@ block content
 					th Entidade:
 					th Valor:
 					th Data das doações:
+					th
 			tbody
 				each valor in lista
 					tr
 						td #{valor._entidades}
 						td R$ #{valor.valordoado}
-						td #{moment(valor.data).format('DD/MM/YYYY HH:MM:ss')}			
+						td #{moment(valor.data).format('DD/MM/YYYY HH:MM:ss')}
+						td
+							a(href="javascript: Excluir('#{id}');", class="btn btn-danger")
+								span(class="glyphicon glyphicon-trash")
 		br
 		br
+block scripts
+	script(type="text/javascript").
+		function Excluir(amigo){
+			var pergunta = confirm('Deseja realmente excluir?');
+			if(pergunta){
+				$.ajax({
+					url: '/doar/sucesso/delete/5764d578da536fc40cc25166',
+						dataType: 'json',
+						type: 'POST',
+						statusCode: {
+							200: function(data){
+								alert(data);
+								window.location.reload();
+							},
+							400: function(data){
+								alert(data);
+							}
+						}
+				});
+			}
+		}

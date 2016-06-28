@@ -40,6 +40,32 @@ block content
 								a(href="#", class="btn btn-info")
 									span(class="glyphicon glyphicon-search")
 								span &nbsp;
+		br
+		br
+		p 
+			h4 Fazer nova doação
+		form(method="POST", action="/doar/sucesso/#{id}", role="form")
+			table(class="table table-striped")
+				thead
+					tr
+						th Logo:
+						th Entidade:
+						th Valor:
+						th
+				tbody
+					each valor in lista
+						tr
+							td
+								p Logo
+							td 
+								p #{valor.nomedaentidade}
+								input(type="hidden", name="doacoes[_entidades]", value="#{valor.nomedaentidade}")
+								input(type="hidden", name="doacoes[status]", value="Aguardando confirmação")
+							td
+								input(type="text", class="form-control input", name="valordoado")
+							td
+								input(type="hidden", class="form-control input", id="resultado", name="valortotal")
+			button(type="submit", class="btn btn-success", id="somar") Fazer doação
 	else
 		p Faça a sua doação:
 		form(method="POST", action="/doar/sucesso/#{id}", role="form")
@@ -63,7 +89,7 @@ block content
 								input(type="text", class="form-control input", name="doacoes[valordoado]")
 							td
 								input(type="hidden", class="form-control input", id="resultado", name="valortotal")
-			button(type="submit", class="btn btn-success", id="somar") Gerar Boleto
+			button(type="submit", class="btn btn-success", id="somar") Fazer doação
 
 block scripts
 	script(type="text/javascript").
@@ -77,4 +103,3 @@ block scripts
 						$("#resultado").val("R$ "+total.toFixed(2));
 					});
 		});
-			

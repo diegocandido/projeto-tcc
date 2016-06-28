@@ -7,4 +7,6 @@ module.exports = function(app) {
 
 	app.route('/doar/sucesso/:id').post(autenticar, doar.sucesso);
 
+	app.route('/doar/sucesso/delete/5764d578da536fc40cc25166').post(doar.excluir);
+
 }

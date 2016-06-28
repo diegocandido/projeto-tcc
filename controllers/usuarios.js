@@ -71,6 +71,7 @@ module.exports = function(app) {
 		},
 
 		show: function(req, res) {
+			var _id = req.params.id;
 			Usuario.findById(req.params.id, function(err, dados) {
 				if (err) {
 					req.flash('erro', 'Erro ao visualizar usuário: ' + err);
@@ -78,7 +79,8 @@ module.exports = function(app) {
 				} else {
 					res.render('usuarios/show', {
 						dados: dados,
-						lista: dados.doacoes
+						lista: dados.doacoes,
+						id: _id
 					});
 				}
 			});

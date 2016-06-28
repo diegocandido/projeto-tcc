@@ -1,20 +1,26 @@
 extends ../layout
 
-block content
-	form(method="POST", action="/login", class="form-login")
-		h3 Entrar no Sistema
+block content	
+	div(class="col-lg-6")
+		form(method="POST", action="/login", class="form-login")
+			h3 Entrar no Sistema
+			p Preencha os campos necessários para acessar.
+			if messages.erro
+				br
+				div(class="alert alert-danger")
+					each msg in messages.erro
+						b= msg
+						br
+			div(class="form-group")
+				label E-mail
+				input(type="email", class="form-control", placeholder="E-mail", name="email", autofocus, required)
+			div(class="form-group")
+				label Senha
+				input(type="password", class="form-control", placeholder="Senha", name="password", required)
+			button(type="submit", class="btn btn-primary btn-block") Entrar
+	div(class="col-lg-6")
+		br
+		h3 Se cadastrar!
 		p Preencha os campos necessários para acessar.
-
-		if messages.erro
-			br
-			div(class="alert alert-danger")
-				each msg in messages.erro
-					b= msg
-					br
-		div(class="form-group")
-			label E-mail
-			input(type="email", class="form-control", placeholder="E-mail", name="email", autofocus, required)
-		div(class="form-group")
-			label Senha
-			input(type="password", class="form-control", placeholder="Senha", name="password", required)
-		button(type="submit", class="btn btn-primary btn-block") Entrar
+		br
+		a.btn.btn-primary(href='usuarios/create', role='button') Não sou cadastrado
