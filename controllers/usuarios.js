@@ -24,6 +24,7 @@ module.exports = function(app) {
 			res.render('usuarios/create', {
 				user: new Usuario()
 			});
+			
 		},
 
 		post: function(req, res) {
@@ -82,6 +83,13 @@ module.exports = function(app) {
 						lista: dados.doacoes,
 						id: _id
 					});
+				//	if (valorconfirmado) {
+					// res.render(entidades, {
+					// valortotal: dados.doacoes.valordoado
+					//})	
+				//	}
+				// definer um boleano, depois exibir na view o valor confirmado
+					
 				}
 			});
 		},
