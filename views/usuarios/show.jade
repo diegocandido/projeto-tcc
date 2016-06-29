@@ -39,6 +39,7 @@ block content
 				tr
 					th Entidade:
 					th Valor:
+					th Status:
 					th Data das doações:
 					th
 			tbody
@@ -46,19 +47,42 @@ block content
 					tr
 						td #{valor._entidades}
 						td R$ #{valor.valordoado}
+						td #{valor.status}
 						td #{moment(valor.data).format('DD/MM/YYYY HH:MM:ss')}
 						td
-							a(href="javascript: Excluir('#{id}');", class="btn btn-danger")
+							a(href="javascript: Excluir('#{valor._id}', '#{id}');", class="btn btn-danger")
 								span(class="glyphicon glyphicon-trash")
+							&nbsp;
+							a(href="javascript: Atualizar('#{valor._id}', '#{id}');", class="btn btn-success")
+								span(class="glyphicon glyphicon-ok")
 		br
 		br
 block scripts
 	script(type="text/javascript").
-		function Excluir(amigo){
+		function Excluir(contato, amigo){
 			var pergunta = confirm('Deseja realmente excluir?');
 			if(pergunta){
 				$.ajax({
-					url: '/doar/sucesso/delete/5764d578da536fc40cc25166',
+						url: '/doar/sucesso/delete/'+contato+'/'+amigo,
+						dataType: 'json',
+						type: 'POST',
+						statusCode: {
+							200: function(data){
+								alert(data);
+								window.location.reload();
+							},
+							400: function(data){
+								alert(data);
+							}
+						}
+				});
+			}
+		}
+		function Atualizar (contato, amigo){
+			var pergunta = confirm('Confirma o recebimento do valor?');
+			if(pergunta){
+				$.ajax({
+						url: '/doar/sucesso/atualizar/'+contato+'/'+amigo,
 						dataType: 'json',
 						type: 'POST',
 						statusCode: {

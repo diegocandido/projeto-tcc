@@ -36,17 +36,16 @@ module.exports = function(app) {
 						});
 					}
 					res.render('doar/sucesso/' + id);
-					console.log(dados);
 				});
 			});
 		},
 		excluir: function(req, res) {
-			var _id = "5764d578da536fc40cc25166";
+			var _id = req.params.amigo;
 			Usuario.findById(_id, function(err, dados) {
 				if (err) {
 					res.json(400, 'Erro ao excluir contato: ' + err);
 				}
-				var contatoID = "5764d8e2997160dc0c7a7e33";
+				var contatoID = req.params.id;
 				dados.doacoes.id(contatoID).remove();
 				dados.save(function(err) {
 					if (err) {
@@ -55,6 +54,9 @@ module.exports = function(app) {
 					res.json(200, 'Registro excluído com sucesso!');
 				});
 			});
+		},
+		atualizar: function(req, res) {
+
 		}
 	}
 	return DoacaoController;
