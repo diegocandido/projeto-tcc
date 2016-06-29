@@ -10,6 +10,7 @@ module.exports = function() {
 		valordoado: {
 			type: Number
 		},
+		// status:  { type: Boolean, default: false } 
 		status: {
 			type: String
 		},
