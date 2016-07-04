@@ -58,7 +58,7 @@ module.exports = function(app) {
 								});
 							} else {
 								req.flash('info', 'Registro cadastrado com sucesso!');
-								res.redirect('/usuarios');
+								res.redirect('/login');
 							}
 						});
 					}
@@ -69,20 +69,18 @@ module.exports = function(app) {
 				});
 			}
 		},
-
 		show: function(req, res) {
 			var _id = req.params.id;
-			Usuario.findById(req.params.id, function(err, dados) {
-				if (err) {
-					req.flash('erro', 'Erro ao visualizar usuário: ' + err);
-					res.redirect('/usuarios');
-				} else {
+			Usuario.findById(_id, function(err, dados) {
+				Doacao.findOne({
+					'_idusuario': _id
+				}, function(err, dados2) {
 					res.render('usuarios/show', {
 						dados: dados,
-						lista: dados.doacoes,
+						listar: dados2,
 						id: _id
 					});
-				}
+				});
 			});
 		},
 
@@ -119,7 +117,6 @@ module.exports = function(app) {
 					var model = data;
 					model.nome = req.body.nome;
 					model.site = req.body.site;
-
 					model.save(function(err) {
 						if (err) {
 							req.flash('erro', 'Erro ao editar: ' + err);

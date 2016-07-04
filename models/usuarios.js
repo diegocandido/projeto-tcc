@@ -2,22 +2,6 @@ var mongoose = require('mongoose');
 var bcrypt = require('bcrypt-nodejs');
 
 module.exports = function() {
-	var doacaoSchema = mongoose.Schema({
-		_entidades: {
-			type: String,
-			trim: true
-		},
-		valordoado: {
-			type: Number
-		},
-		status: {
-			type: String
-		},
-		data: {
-			type: Date,
-			default: Date.now
-		}
-	});
 	var usuarioSchema = mongoose.Schema({
 		nome: {
 			type: String,
@@ -65,7 +49,6 @@ module.exports = function() {
 			type: String,
 			trim: true
 		},
-		doacoes: [doacaoSchema],
 		password: {
 			type: String
 		},

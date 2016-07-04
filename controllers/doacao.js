@@ -7,7 +7,9 @@ module.exports = function(app) {
 	var DoacaoController = {
 		index: function(req, res) {
 			var _id = req.params.id;
-			Usuario.findById(_id, function(err, dados2) {
+			Doacao.find({
+				'_idusuario': _id
+			}, function(err, dados2) {
 				if (err) {
 					console.log('Erro');
 				}
@@ -17,7 +19,7 @@ module.exports = function(app) {
 					} else {
 						res.render('doar/index', {
 							lista: dados,
-							listar: dados2.doacoes,
+							listar: dados2,
 							id: _id
 						});
 					}
@@ -26,19 +28,21 @@ module.exports = function(app) {
 		},
 		sucesso: function(req, res) {
 			var id = req.params.id;
-			Usuario.findById(req.params.id, function(err, dados) {
-				var contato = req.body.doacoes;
-				dados.doacoes.push(contato);
-				dados.save(function(err) {
-					if (err) {
-						res.render('doar/index', {
-							model: req.body,
-						});
-					}
-					res.render('doar/sucesso/' + id);
-				});
+			var model = new Doacao();
+			model.status = "Aguardando Confirmação";
+			model.valordoado = req.body.valordoado;
+			model.beneficiaria = req.body.beneficiaria;
+			model._identidade = req.body._identidade;
+			model._idusuario = id;
+			model.save(function(err) {
+				if (err) {
+					res.render('/');
+				} else {
+					res.render('doar/boleto');
+				}
 			});
 		},
+
 		excluir: function(req, res) {
 			var _id = req.params.amigo;
 			Usuario.findById(_id, function(err, dados) {
@@ -56,8 +60,43 @@ module.exports = function(app) {
 			});
 		},
 		atualizar: function(req, res) {
-
-		}
+			var _id = req.params.doacao;
+			var _idusuario = req.params.usuario;
+			var valor = req.params.valor;
+			Usuario.findById(_idusuario, function(err, dados1) {
+				var model1 = dados1;
+				model1.valortotal = valor;
+				model1.save(function(err) {
+					if (err) {
+						console.log('Erro ao atualizar valor');
+					}
+					console.log('Atualizar com sucesso valor');
+				});
+			});
+			Doacao.findById(_id, function(err, dados) {
+				var model = dados;
+				model.status = "Doação Confirmada";
+				model.save(function(err) {
+					if (err) {
+						res.json(400, 'Erro ao confirmar o valor: ' + err);
+						console.log('Erro');
+					}
+					res.json(200, 'Valor confirmado com sucesso!');
+					console.log(valor);
+				});
+			});
+		},
+		lista: function(req, res) {
+			Doacao.find(function(err, dados) {
+				if (err) {
+					res.redirect('/');
+				} else {
+					res.render('doacoes/index', {
+						lista: dados
+					});
+				}
+			});
+		},
 	}
 	return DoacaoController;
 }

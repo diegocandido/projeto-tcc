@@ -5,10 +5,10 @@ module.exports = function(app) {
 
 	app.route('/doar/index/:id').get(autenticar, doar.index);
 
-	app.route('/doar/sucesso/:id').post(autenticar, doar.sucesso);
+	app.route('/doar/boleto').post(doar.sucesso);
 
-	app.route('/doar/sucesso/delete/:id/:amigo').post(doar.excluir);
+	app.route('/doar/sucesso/delete/:id/:amigo').post(autenticar, doar.excluir);
 
-	app.route('/doar/sucesso/atualizar/:id/:amigo').post(doar.atualizar);
+	app.route('/doar/sucesso/atualizar/:id/:amigo').post(autenticar, doar.atualizar);
 
 }

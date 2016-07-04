@@ -1,6 +1,7 @@
 module.exports = function(app) {
 
   var Entidade = app.models.entidades;
+  var Doacao = app.models.doacao;
 
   var EntidadesController = {
     index: function(req, res) {

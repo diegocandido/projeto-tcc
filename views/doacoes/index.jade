@@ -1,0 +1,63 @@
+extends ../layout
+
+block content
+	br
+	&nbsp; &nbsp;
+	h1 Lista de Doacões
+	br
+	br
+	if messages.erro
+		div(class="alert alert-danger")
+			p #{messages.erro}
+		br
+	if messages.info
+		div(class="alert alert-success")
+			p #{messages.info}
+		br
+	if lista.length > 0
+		table(class="table table-striped")
+			thead
+				tr
+					th Status:
+					th Data:
+					th Valor:
+					th Identificador:
+					th Confirmar:
+					th 
+			tbody
+				each valor in lista
+					tr
+						td #{valor.status}
+						td #{moment(valor.data_cad).format('DD/MM/YYYY HH:MM:ss')}
+						td R$ #{valor.valordoado}
+							input(type="text", name="valor", value="#{valor.valordoado}")
+						td 
+						td
+							a(href="/doacoes/confirmar/#{valor._id}", class="btn btn-success")
+								span(class="glyphicon glyphicon-ok")
+							a(href="javascript: Atualizar('#{valor._id}', '#{valor._idusuario}', '#{valor.valordoado}');", class="btn btn-danger")
+								span(class="glyphicon glyphicon-trash")
+	else
+		p Nenhum registro encontrado!
+
+block scripts
+	script(type="text/javascript").
+		function Atualizar(doacao, usuario, valor){
+			var pergunta = confirm('Confirma o recebimento do valor?');
+			if(pergunta){
+				$.ajax({
+					url: '/doacoes/confirmar/'+doacao+'/'+usuario+'/'+valor,
+					dataType: 'json',
+					type: 'POST',
+					statusCode: {
+						200: function(data){
+							alert(data);
+							window.location.reload();
+						},
+						400: function(data){
+							alert(data);
+						}
+					}
+				});
+			}
+		}

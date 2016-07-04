@@ -13,7 +13,7 @@ block content
 			p #{messages.info}
 		br
 	if listar.length > 0
-		p Doações já realizadas
+		p Doação Já Efetuada
 			table(class="table table-striped")
 				thead
 					tr
@@ -29,7 +29,7 @@ block content
 							td
 								p Logo
 							td 
-								p #{valor.beneficiaria}
+								p #{valor._entidades}
 							td
 								p #{moment(valor.data).format('DD/MM/YYYY HH:MM:ss')}
 							td
@@ -44,7 +44,7 @@ block content
 		br
 		p 
 			h4 Fazer nova doação
-		form(method="POST", action="/doar/boleto", role="form")
+		form(method="POST", action="/doar/sucesso/#{id}", role="form")
 			table(class="table table-striped")
 				thead
 					tr
@@ -59,8 +59,8 @@ block content
 								p Logo
 							td 
 								p #{valor.nomedaentidade}
-									input(type="hidden", name="_identidades", value="#{valor.id}")
-									input(type="hidden", name="beneficiaria", value="#{valor.nomedaentidade}")
+								input(type="hidden", name="doacoes[_entidades]", value="#{valor.nomedaentidade}")
+								input(type="hidden", name="doacoes[status]", value="Aguardando confirmação")
 							td
 								input(type="text", class="form-control input", name="valordoado")
 							td
@@ -68,7 +68,7 @@ block content
 			button(type="submit", class="btn btn-success", id="somar") Fazer doação
 	else
 		p Faça a sua doação:
-		form(method="POST", action="/doar/boleto", role="form")
+		form(method="POST", action="/doar/sucesso/#{id}", role="form")
 			table(class="table table-striped")
 				thead
 					tr
@@ -83,10 +83,9 @@ block content
 								p Logo
 							td 
 								p #{valor.nomedaentidade}
-									input(type="hidden", name="_identidades", value="#{valor.id}")
 									input(type="hidden", name="beneficiaria", value="#{valor.nomedaentidade}")
 							td
-								input(type="text", class="form-control input", name="doacoes[valordoado]")
+								input(type="text", class="form-control input", name="valordoado")
 							td
 								input(type="hidden", class="form-control input", id="resultado", name="valortotal")
 			button(type="submit", class="btn btn-success", id="somar") Fazer doação
@@ -102,4 +101,4 @@ block scripts
 						});
 						$("#resultado").val("R$ "+total.toFixed(2));
 					});
-});
+		});

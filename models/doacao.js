@@ -2,26 +2,26 @@ var mongoose = require('mongoose');
 
 module.exports = function() {
 
-  var doacoesSchema = mongoose.Schema({
-    _entidades: {
-      type: String,
-      trim: true
-    },
-    _usuario: {
-      type: String,
-      trim: true
-    },
-    valordoado: {
-      type: Number
-    },
+  var doacaoSchema = mongoose.Schema({
     status: {
       type: String
     },
-    data: {
+    beneficiaria: {
+      type: String
+    },
+    _identidade: {
+      type: String
+    },
+    _idusuario: {
+      type: String
+    },
+    valordoado: {
+      type: String
+    },
+    data_doacao: {
       type: Date,
       default: Date.now
     }
   });
-
-  return mongoose.model('Doacoes', doacoesSchema);
+  return mongoose.model('Doacao', doacaoSchema);
 }
