@@ -30,13 +30,11 @@ block content
 						td #{valor.status}
 						td #{moment(valor.data_cad).format('DD/MM/YYYY HH:MM:ss')}
 						td R$ #{valor.valordoado}
-							input(type="text", name="valor", value="#{valor.valordoado}")
+							input(type="hidden", name="valor", value="#{valor.valordoado}")
 						td 
 						td
-							a(href="/doacoes/confirmar/#{valor._id}", class="btn btn-success")
+							a(href="javascript: Atualizar('#{valor._id}', '#{session._id}', '#{valor.valordoado}');", class="btn btn-success")
 								span(class="glyphicon glyphicon-ok")
-							a(href="javascript: Atualizar('#{valor._id}', '#{valor._idusuario}', '#{valor.valordoado}');", class="btn btn-danger")
-								span(class="glyphicon glyphicon-trash")
 	else
 		p Nenhum registro encontrado!
 

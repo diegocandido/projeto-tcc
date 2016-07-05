@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-	h1 Atualizar Usuário
+	h1 Atualizar Dados
 	hr
 	br
 	if messages.erro
@@ -12,15 +12,41 @@ block content
 		br
 	form(method="POST", action="/usuarios/edit/#{dados._id}", role="form")
 		div(class="form-group")
-			label Nome
+			label Nome Complemento
 			input(type="text", class="form-control", name="nome", placeholder="Nome", value="#{dados.nome}", autofocus, required)
 		div(class="form-group")
-			label Site
-			input(type="text", class="form-control", name="site", placeholder="Site", value="#{dados.site}")
+			label CPF
+			input(type="text", class="form-control", name="cpf", placeholder="CPF", value="#{dados.cpf}")
+		div(class="form-group")
+			label Telefone
+			input(type="text", class="form-control", name="telefone", placeholder="Telefone", value="#{dados.telefone}")
+		div(class="form-group")
+			label Endereço
+			input(type="text", class="form-control", name="endereco", placeholder="Endereço", value="#{dados.endereco}")
+		div(class="form-group")
+			label Número
+			input(type="text", class="form-control", name="endereco", placeholder="Endereço", value="#{dados.numero}")
+		div(class="form-group")
+			label Complemento
+			input(type="text", class="form-control", name="complemento", placeholder="Complemento", value="#{dados.complemento}")
+		div(class="form-group")
+			label Bairro
+			input(type="text", class="form-control", name="bairro", placeholder="Bairro", value="#{dados.bairro}")
+		div(class="form-group")
+			label Cidade
+			input(type="text", class="form-control", name="cidade", placeholder="Cidade", value="#{dados.cidade}")
+		div(class="form-group")
+			label Estado
+			input(type="text", class="form-control", id="uf", name="uf", size="2", placeholder="RS", value="#{dados.uf}")			
 		div(class="form-group")
 			label E-mail
-			input(type="email", class="form-control", name="email", placeholder="E-mail", value="#{dados.email}", disabled)
+			input(type="email", class="form-control", name="email", placeholder="E-mail", value="#{dados.email}")
+		div(class="form-group")
+			label Nova Senha
+			input(type="password", class="form-control", name="password", placeholder="Senha", value="#{dados.password}")
+		div(class="form-group")
+			label Confirmar nova senha
+			input(type="password", class="form-control", name="password_confirmar", placeholder="Confirmar Senha", value="#{dados.password}")
 		button(type="submit", class="btn btn-success") Salvar
 	br
 	br
-	a(href="/usuarios") Voltar

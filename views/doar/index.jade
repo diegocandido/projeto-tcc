@@ -3,6 +3,8 @@ extends ../layout
 block content
 	h1 Doações
 	br
+	a.btn.btn-primary(href='/usuarios/edit/#{session._id}', role='button') Atualizar Dados »
+	br
 	br
 	if messages.erro
 		div(class="alert alert-danger")
@@ -44,7 +46,7 @@ block content
 		br
 		p 
 			h4 Fazer nova doação
-		form(method="POST", action="/doar/boleto", role="form")
+		form(method="POST", action="/doar/boleto/#{id}", role="form")
 			table(class="table table-striped")
 				thead
 					tr
@@ -56,7 +58,7 @@ block content
 					each valor in lista
 						tr
 							td
-								p Logo
+								img(src='../../img/larpadilha.jpg')
 							td 
 								p #{valor.nomedaentidade}
 									input(type="hidden", name="_identidades", value="#{valor.id}")
@@ -68,7 +70,7 @@ block content
 			button(type="submit", class="btn btn-success", id="somar") Fazer doação
 	else
 		p Faça a sua doação:
-		form(method="POST", action="/doar/boleto", role="form")
+		form(method="POST", action="/doar/boleto/#{id}", role="form")
 			table(class="table table-striped")
 				thead
 					tr
@@ -80,13 +82,13 @@ block content
 					each valor in lista
 						tr
 							td
-								p Logo
+								img(src='../../img/larpadilha.jpg')
 							td 
 								p #{valor.nomedaentidade}
 									input(type="hidden", name="_identidades", value="#{valor.id}")
 									input(type="hidden", name="beneficiaria", value="#{valor.nomedaentidade}")
 							td
-								input(type="text", class="form-control input", name="doacoes[valordoado]")
+								input(type="text", class="form-control input", name="valordoado")
 							td
 								input(type="hidden", class="form-control input", id="resultado", name="valortotal")
 			button(type="submit", class="btn btn-success", id="somar") Fazer doação

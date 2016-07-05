@@ -5,7 +5,7 @@ module.exports = function(app) {
 
 	app.route('/doar/index/:id').get(autenticar, doar.index);
 
-	app.route('/doar/boleto').post(doar.sucesso);
+	app.route('/doar/boleto/:id').post(doar.sucesso);
 
 	app.route('/doar/sucesso/delete/:id/:amigo').post(autenticar, doar.excluir);
 

@@ -99,7 +99,8 @@ module.exports = function(app) {
 		},
 
 		edit: function(req, res) {
-			Usuario.findById(req.params.id, function(err, data) {
+			var _id = req.params.id;
+			Usuario.findById(_id, function(err, data) {
 				if (err) {
 					req.flash('erro', 'Erro ao editar: ' + err);
 					res.redirect('/usuarios');

@@ -22,7 +22,7 @@ block content
 					th Data:
 					th Nome:
 					th CPF:
-					th Valor:
+					th Valor Confirmado
 					th Ações:
 					th 
 			tbody
@@ -31,7 +31,7 @@ block content
 						td #{moment(valor.data_cad).format('DD/MM/YYYY HH:MM:ss')}
 						td #{valor.nome}
 						td #{valor.cpf}
-						td #{valor.valortotal}
+						td R$ #{valor.valortotal}
 						td
 							a(href="/usuarios/show/#{valor._id}", class="btn btn-info")
 								span(class="glyphicon glyphicon-search")

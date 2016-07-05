@@ -1,3 +1,23 @@
 extends ../layout
 
 block content
+  table
+    thead
+      tr
+        th Emissão
+        th Vencimento
+        th Valor
+      tbody
+        tr
+          td 11/07/2014
+          td 30/05/2020
+          td R$ 1.250,43
+        tr
+          td 724 dias
+          td vence em 1426 dias
+          td 
+  br          
+  a.btn.btn-primary.app-tooltip(href='https://sandbox.boletocloud.com/boleto/2via/download/ACin7NWnpRVC-dpjKqu4b5LVR7T1vcbE9UmhAm-Qa9g=', role='button', title='', data-original-title='Fazer download do boleto em PDF com vencimento atualizado')
+    i.fa.fa-download
+    |  Download PDF 
+    i.fa.fa-barcode

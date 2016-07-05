@@ -16,7 +16,7 @@ module.exports = function() {
       type: String
     },
     valordoado: {
-      type: String
+      type: Number
     },
     data_doacao: {
       type: Date,
