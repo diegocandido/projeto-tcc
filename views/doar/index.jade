@@ -89,10 +89,12 @@ block content
 								img(src='../../img/larpadilha.jpg')
 							td 
 								p #{valor.nomedaentidade}
+								input(type="hidden", name="_identidades", value="#{valor.id}")
+								input(type="hidden", name="_idusuario", value="#{session._id}")
+								input(type="hidden", name="beneficiaria", value="#{valor.nomedaentidade}")
 							td
 								input(type="text", class="form-control input", name="valordoado", id="entrada")
 								p(id="saida")
-								input(type="hidden", name="_idusuario", value="#{session._id}")
 							td
 								input(type="hidden", class="form-control input", id="resultado", name="valortotal")
 			button(type="submit", class="btn btn-success", id="somar") Fazer doação
