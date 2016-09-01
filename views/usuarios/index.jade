@@ -2,8 +2,23 @@ extends ../layout
 
 block content
 	br
-	a(href="/entidades",class="btn btn-lg btn-info") Entidades
-	&nbsp; &nbsp;
+	div(class="col-lg-12")
+		a.btn.btn-info(href='/dashboard', role='button') Home
+		&nbsp; &nbsp;
+		a.btn.btn-primary(href='/usuarios', role='button') Usuários
+		&nbsp; &nbsp;
+		a.btn.btn-default(href='/entidades', role='button') Entidades
+		&nbsp; &nbsp;
+		a.btn.btn-default(href='/doacoes', role='button') Doações
+		&nbsp; &nbsp;
+		a.btn.btn-default(href='/doacoes', role='button') Confirmar
+		&nbsp; &nbsp;
+		a.btn.btn-default(href='/doacoes', role='button') Enviadas
+		&nbsp; &nbsp;
+		a.btn.btn-default(href='/configurar', role='button') Configurar
+		&nbsp; &nbsp;
+	br
+	br
 	h1 Lista de Usuários
 	br
 	br

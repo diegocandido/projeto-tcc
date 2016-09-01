@@ -1,5 +1,5 @@
 {
-  "name": "contatos",
+  "name": "comdica2016",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -22,5 +22,8 @@
     "node-boleto": "^2.0.0",
     "nodemailer": "~0.6.5",
     "static-favicon": "~1.0.0"
+  },
+  "engines": {
+    "node": "*"
   }
 }

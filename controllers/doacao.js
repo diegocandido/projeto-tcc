@@ -15,34 +15,49 @@ module.exports = function(app) {
 				}
 				Entidade.find(function(err, dados) {
 					if (err) {
-						res.redirect('/');
-					} else {
-						res.render('doar/index', {
-							lista: dados,
-							listar: dados2,
-							id: _id
-						});
+						console.log('Erro');
 					}
+					res.render('doar/index', {
+						lista: dados,
+						listar: dados2,
+						id: _id
+					});
 				});
 			});
 		},
 		sucesso: function(req, res) {
-			var id = req.params.id;
+			var id = req.body._idusuario;
 			var model = new Doacao();
 			model.status = "Aguardando Confirmação";
 			model.valordoado = req.body.valordoado;
 			model.beneficiaria = req.body.beneficiaria;
 			model._identidade = req.body._identidade;
 			model._idusuario = id;
+			var valor = req.body.valordoado;
 			model.save(function(err) {
 				if (err) {
 					res.render('/');
 				} else {
-					res.render('doar/boleto');
+					Usuario.findById(id, function(error, dados) {
+						console.log(dados);
+						Doacao.findOne({
+								'_idusuario': id
+							},
+							function(err, dados1) {
+								if (err) {
+									res.redirect('/');
+								} else {
+									res.render('doar/boleto', {
+										dados: dados,
+										dados1: dados1
+									});
+								}
+								console.log(dados1);
+							});
+					});
 				}
 			});
 		},
-
 		excluir: function(req, res) {
 			var _id = req.params.amigo;
 			Usuario.findById(_id, function(err, dados) {
@@ -96,7 +111,7 @@ module.exports = function(app) {
 					});
 				}
 			});
-		},
+		}
 	}
 	return DoacaoController;
 }

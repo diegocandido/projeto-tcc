@@ -12,13 +12,15 @@ var express = require('express'),
   expressValidator = require('express-validator');
 
 //conexão com o mongodb
-mongoose.connect('mongodb://localhost/comdica2016', function(err) {
-  if (err) {
-    console.log("Erro ao conectar no mongodb: " + err);
-  } else {
-    console.log("Conexão com o mongodb efetuada com sucesso!");
-  }
-});
+mongoose.connect(
+  'mongodb://diegocandido:650121@ds021694.mlab.com:21694/comdica2016',
+  function(err) {
+    if (err) {
+      console.log("Erro ao conectar no mongodb: " + err);
+    } else {
+      console.log("Conexão com o mongodb efetuada com sucesso!");
+    }
+  });
 
 var app = express();
 
@@ -52,9 +54,11 @@ app.use(function(req, res, next) {
 load('models').then('controllers').then('routes').into(app);
 
 //middleware
-app.use(erros.notfound);
-app.use(erros.serverError);
+//app.use(erros.notfound);
+//app.use(erros.serverError);
 
-app.listen(3000, function() {
-  console.log('Express server listening on port 3000');
+var port = process.env.PORT || 5000
+
+app.listen(port, function() {
+  console.log('Express server listening on port 5000');
 });

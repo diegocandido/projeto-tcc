@@ -2,10 +2,16 @@ extends ../layout
 
 block content
 	div(class="jumbotron")
-		div(class="col-lg-4")
-			a.btn.btn-primary(href='/usuarios', role='button') Usuários »
-		div(class="col-lg-4")
-			a.btn.btn-primary(href='/entidades', role='button') Entidades »
-		div(class="col-lg-4")
-			a.btn.btn-primary(href='/doacoes', role='button') Doações »	
+		div(class="col-lg-2")
+			a.btn.btn-xs.btn-default(href='/usuarios', role='button') Usuários
+		div(class="col-lg-2")
+			a.btn.btn-default(href='/entidades', role='button') Entidades
+		div(class="col-lg-2")
+			a.btn.btn-primary(href='/doacoes', role='button') Doações
+		div(class="col-lg-2")
+			a.btn.btn-success(href='/doacoes', role='button') Confirmar
+		div(class="col-lg-2")
+			a.btn.btn-primary(href='/doacoes', role='button') Enviadas
+		div(class="col-lg-2")
+			a.btn.btn-warning(href='/configurar', role='button') Configurar			
 		div(class="row")

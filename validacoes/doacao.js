@@ -1,6 +1,6 @@
 module.exports = function(req, res) {
 
-  req.assert('valora', 'Informe o valor').notEmpty();
+  req.assert('valordoado', 'Informe o valor').notEmpty();
 
   var validacoesErros = req.validationErrors() || [];
 

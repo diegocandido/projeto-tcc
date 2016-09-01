@@ -1,23 +1,38 @@
 extends ../layout
 
 block content
-  table
-    thead
-      tr
-        th Emissão
-        th Vencimento
-        th Valor
-      tbody
-        tr
-          td 11/07/2014
-          td 30/05/2020
-          td R$ 1.250,43
-        tr
-          td 724 dias
-          td vence em 1426 dias
-          td 
-  br          
-  a.btn.btn-primary.app-tooltip(href='https://sandbox.boletocloud.com/boleto/2via/download/ACin7NWnpRVC-dpjKqu4b5LVR7T1vcbE9UmhAm-Qa9g=', role='button', title='', data-original-title='Fazer download do boleto em PDF com vencimento atualizado')
-    i.fa.fa-download
-    |  Download PDF 
-    i.fa.fa-barcode
+  div(class="jumbotron")
+    div(class="col-lg-6")
+      h1 Parabéns!
+      h1 #{dados.nome}
+    div(class="col-lg-6")
+      h2 Você doou R$ #{dados1.valordoado}
+      p(class="lead") 
+        | Para finalizar, clique abaixo, para gerar o boleto. 
+        | Pague e aguardo as confirmações por e-mail.
+      form(method="POST", action="http://www.iboleto.com.br/iboleto/iconnect/iconnect.php", role="form")
+        input(type="hidden", class="form-control", name="nome", value="#{dados.nome}")
+        input(type="hidden", class="form-control", name="email", value="#{dados.email}")
+        input(type="hidden", class="form-control", name="nome", value="#{dados.cidade}")
+        input(type="hidden", class="form-control", name="cpf_cnpj", value="#{dados.cpf}")
+        input(type="hidden", class="form-control", name="ie_rg", value="2067088928")
+        input(type="hidden", class="form-control", name="empresa", value="Teste")
+        input(type="hidden", class="form-control", name="endereco", value="#{dados.endereco}")
+        input(type="hidden", class="form-control", name="bairro", value="#{dados.bairro}")
+        input(type="hidden", class="form-control", name="cidade", value="#{dados.cidade}")
+        input(type="hidden", class="form-control", name="estado", value="#{dados.uf}")
+        input(type="hidden", class="form-control", name="cep", value="#{dados.cep}")
+        input(type="hidden", class="form-control", name="telefone", value="#{dados.telefone}")
+        input(type="hidden", class="form-control", name="cod_conta", value="13788")
+        input(type="hidden", class="form-control", name="cod_user", value="21680")
+        input(type="hidden", class="form-control", name="cod_aut", value="156949880")
+        input(type="hidden", class="form-control", name="cad_cli", value="1")
+        input(type="hidden", class="form-control", name="email_admin", value="1")
+        input(type="hidden", class="form-control", name="check_email_address", value="sim")
+        input(type="hidden", class="form-control", name="texto_email", value="1")
+        input(type="hidden", class="form-control", name="valor_boleto", value="#{dados1.valordoado}")
+        input(type="hidden", class="form-control", name="data_order", value="nome,email,senha,cpf_cnpj,ie_rg,empresa,endereco,bairro,cidade,estado,cep,telefone")
+        input(type="hidden", class="form-control", name="redir", value="http://www.terra.com.br")
+        input(type="hidden", class="form-control", name="descricao", value="Boleto gerado para doação e abatimento do Imposto de Renda. Usando como base a lei fiscal.")
+        button(type="submit", class="btn btn-success") Imprimir Boleto
+    
