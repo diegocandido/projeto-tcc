@@ -5,6 +5,15 @@ module.exports = function(app) {
 	app.route('/')
 		.get(home.index);
 
+	app.route('/sobre')
+		.get(home.sobre);
+
+	app.route('/comodoar')
+		.get(home.comodoar);
+
+	app.route('/legislacao')
+		.get(home.legislacao);
+
 	app.route('/email')
 		.get(home.email)
 		.post(home.enviar);

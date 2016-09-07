@@ -16,7 +16,7 @@ block content
 			input(type="text", class="form-control", name="nome", placeholder="Nome Completo", autofocus)
 		div(class="form-group")
 			label CPF
-			input(type="text", class="form-control", class="validate", name="cpf", id="cpf", placeholder="000.000.000-00")
+			input(type="text", class="form-control", name="cpf", id="cpf", placeholder="000.000.000-00", onblur="return verificarCPF(this.value)")
 		div(class="form-group")
 			label Telefone
 			input(type="text", class="form-control", name="telefone", placeholder="(00) 0000-0000")
@@ -104,17 +104,4 @@ block scripts
 			$('input[name="cep"]').mask('00000-000');
 			$('input[name="cpf"]').mask('000.000.000-00');
 			$('input[name="telefone"]').mask('(00) 0000-0000');
-		});
-	script(src="/js/jquery.cpfcnpj.min.js")
-	script(type="text/javascript").
-		$(document).ready(function () {
-			$('.validate').cpfcnpj({ 
-				mask: false, 
-				validate: 'cpfcnpj', 
-				event: 'click', 
-				handler: '.btn',
-				ifValid: function (input) { input.removeClass("error"); },
-				ifInvalid: function (input) { input.addClass("error"); }
-			});
-		});
-	
+});

@@ -11,6 +11,17 @@ module.exports = function(app) {
       res.render('home/email');
     },
 
+    sobre: function(req, res) {
+      res.render('home/sobre');
+    },
+
+    comodoar: function(req, res) {
+      res.render('home/comodoar');
+    },
+    legislacao: function(req, res) {
+      res.render('home/legislacao');
+    },
+
     logout: function(req, res) {
       req.session.destroy();
       res.redirect('/');

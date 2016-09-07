@@ -58,7 +58,7 @@ module.exports = function(app) {
 								});
 							} else {
 								req.flash('info', 'Registro cadastrado com sucesso!');
-								res.redirect('/login');
+								res.redirect('/doar');
 							}
 						});
 					}

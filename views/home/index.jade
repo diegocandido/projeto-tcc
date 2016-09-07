@@ -2,26 +2,27 @@ extends ../layout
 
 block content
 	div(class="jumbotron")
-		div(class="col-lg-8")
+		div(class="col-lg-6")
+			img(src='../images/body-header.jpg', class="img-rounded img-responsive")
+		div(class="col-lg-6")
+			h2 
+				| O IR garante o futuro.
+				br
+				| O seu e das nossas crianças.
 			p(class="lead")
-				iframe(width='560', height='285', src='https://www.youtube.com/embed/f9-_mOv0v1g', frameborder='0', allowfullscreen='')
-			p
-		div(class="col-lg-4")
-			p(class="lead") 
-				| Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos, e vem sendo utilizado desde o século XVI,
-				| quando um impressor desconhecido pegou uma bandeja de tipos e os embaralhou para fazer um livro de modelos de tipos.			
-			p
-			a(href="/login" class="btn btn-lg btn-success") Entrar no Sistema
+				| Você pode doar até 6% do seu Imposto de Renda diretamente às entidades assistenciais filiadas ao COMDICA, até 28 de dezembro. Fale com seu contador e ajude a garantir o futuro das crianças da região.
+			a(href="/login" class="btn btn-lg btn-success") Faça a sua doação!
 		div(class="row")
 			div(class="col-lg-4")
-				img(src='../img/logo-larpadilha.jpg')
-				h2 Lar Padilha
+				img(src='../img/logo-apae.jpg', class="img-rounded img-responsive")
+				h2 APAE
 					p(class="lead")
 					p
-						a.btn.btn-primary(href='entidades/575f68a5bc6403440ff20957', role='button') Conheça o trabalho »
+						a.btn.btn-primary(href='entidades/57c78803cd56860300830911', role='button') Conheça o trabalho »
 			div(class="col-lg-4")
-				img(src='../img/logo-apae.jpg')
+				img(src='../img/logo-larpadilha.jpg', class="img-rounded img-responsive")
 				h2 Lar Padilha
 					p(class="lead")
 					p
-						a.btn.btn-primary(href='#', role='button') Conheça o trabalho »			
+						a.btn.btn-primary(href='entidades/57cafb0d55ee4a2c0346774a', role='button') Conheça o trabalho »			
+			div(class="col-lg-4")

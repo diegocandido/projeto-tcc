@@ -4,14 +4,25 @@ block content
 	h1 #{dados.entidade}
 	hr
 	div(class="jumbotron")
+			h1 #{dados.nomedaentidade}
+			hr
+			div(class="col-lg-8")
+				iframe(width='560', height='285', src='https://www.youtube.com/embed/Ts2vjcjlbWY', frameborder='0', allowfullscreen='')
+				p #{dados.texto}
 			div(class="col-lg-3")
-				img(src='../img/logo-larpadilha.jpg')
+				img(src='../img/logo-larpadilha.jpg', class="img-rounded img-responsive")
 				br
-				h1 R$ #{dados.valortotal}
+				h2 R$ #{dados.valortotal}
 				br
 				a(href="../login" class="btn btn-lg btn-success") Fazer doação
 				br
 				br
-			div(class="col-lg-8")
-				p #{dados.texto}
+				h4 Dados da entidade
+				h5 Contato: #{dados.telefone}
+				h5 E-mail: 
+				| #{dados.email}
+				h5 Site: 
+				| #{dados.site}
+				h5 Cidade: #{dados.cidade}
+				h5 Estado: #{dados.estado}
 	div(class="jumbotron")

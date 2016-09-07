@@ -21,17 +21,13 @@ block content
 			table(class="table table-striped")
 				thead
 					tr
-						th Logo:
 						th Entidade:
 						th Data da doação
 						th Status
 						th Valor:
-						th
 				tbody
 					each valor in listar
 						tr
-							td
-								p Logo
 							td 
 								p #{valor.beneficiaria}
 							td
@@ -40,53 +36,24 @@ block content
 								p #{valor.status}
 							td
 								p R$ #{valor.valordoado}
-							td
-								a(href="#", class="btn btn-info")
-									span(class="glyphicon glyphicon-search")
-								span &nbsp;
 		br
 		br
 		p 
-			h4 Fazer nova doação
-		form(method="POST", action="/doar/boleto", role="form")
-			table(class="table table-striped")
-				thead
-					tr
-						th Logo:
-						th Entidade:
-						th Valor:
-						th
-				tbody
-					each valor in lista
-						tr
-							td
-								img(src='../../img/larpadilha.jpg')
-							td 
-								p #{valor.nomedaentidade}
-									input(type="hidden", name="_identidades", value="#{valor.id}")
-									input(type="hidden", name="_idusuario", value="#{session._id}")
-									input(type="hidden", name="beneficiaria", value="#{valor.nomedaentidade}")
-							td
-								input(type="text", class="form-control input", name="valordoado", id="entrada")
-								p(id="saida")
-							td
-								input(type="hidden", class="form-control input", id="resultado", name="valortotal")
-			button(type="submit", class="btn btn-success", id="somar") Fazer doação
+
+
+
+
 	else
 		p Faça a sua doação:
 		form(method="POST", action="/doar/boleto", role="form")
 			table(class="table table-striped")
 				thead
 					tr
-						th Logo:
 						th Entidade:
 						th Valor:
-						th
 				tbody
 					each valor in lista
 						tr
-							td
-								img(src='../../img/larpadilha.jpg')
 							td 
 								p #{valor.nomedaentidade}
 								input(type="hidden", name="_identidades", value="#{valor.id}")
@@ -98,6 +65,10 @@ block content
 							td
 								input(type="hidden", class="form-control input", id="resultado", name="valortotal")
 			button(type="submit", class="btn btn-success", id="somar") Fazer doação
+	br
+	br
+	a(href='http://www26.receita.fazenda.gov.br/irpfsimulaliq/private/pages/simuladoraliquota.jsf?tipoSimulador=M', target='_blank')
+		img(src='../../images/simulador.png')
 
 block scripts
 	script(src="/js/jquery.mask.min.js")
