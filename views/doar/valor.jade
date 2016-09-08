@@ -23,7 +23,7 @@ block content
 			tbody
 					tr
 						td
-							p #{lista.logo}
+							img(src='../../img/#{lista.logo}', class="img-rounded img-responsive",width="100", height="50")
 						td 
 							p #{lista.nomedaentidade}
 							input(type="hidden", name="_identidades", value="#{lista.id}")
@@ -33,7 +33,7 @@ block content
 							input(type="text", class="form-control input", name="valordoado", id="entrada")
 							p(id="saida")
 						td
-							button(type="submit", class="btn btn-success", id="somar") Fazer doação
+		button(type="submit", class="btn btn-success", id="somar") Fazer doação
 	br
 	br
 	div(class="row")

@@ -53,8 +53,7 @@ module.exports = function() {
 			type: String
 		},
 		valortotal: {
-			type: Number,
-			default: "0"
+			type: Number
 		},
 		data_cad: {
 			type: Date,

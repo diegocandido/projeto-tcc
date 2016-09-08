@@ -83,6 +83,8 @@ module.exports = function(app) {
         model.estado = req.body.estado;
         model.texto = req.body.texto;
         model.cidade = req.body.cidade;
+        model.logo = req.body.logo;
+        model.img = req.body.img;
         model.save(function(err) {
           if (err) {
             req.flash('erro', 'Erro ao editar: ' + err);

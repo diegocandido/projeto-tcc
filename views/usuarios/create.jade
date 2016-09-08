@@ -40,7 +40,7 @@ block content
 			input(type="text", class="form-control", id="cidade", name="cidade", placeholder="Cidade", value="#{user.cidade || ''}", required)
 		div(class="form-group")
 			label Estado
-			input(type="text", class="form-control", id="uf", name="uf", size="2", placeholder="RS", value="#{user.uf || ''}", required)					
+			input(type="text", class="form-control", id="uf", name="uf", size="2", placeholder="RS", value="#{user.uf || ''}", required)				
 		div(class="form-group")
 			label E-mail
 			input(type="email", class="form-control", name="email", placeholder="E-mail", value="#{user.email || ''}", required)
@@ -101,6 +101,4 @@ block scripts
 	script(type="text/javascript").
 		$(function(){
 			$('input[name="cep"]').mask('00000-000');
-			$('input[name="cpf"]').mask('000.000.000-00');
-			$('input[name="telefone"]').mask('(00) 0000-0000');
 		});

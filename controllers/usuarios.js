@@ -56,15 +56,17 @@ module.exports = function(app) {
 								res.render('usuarios/create', {
 									user: req.body
 								});
+								console.log("Erro1");
 							} else {
-								req.flash('info', 'Registro cadastrado com sucesso!');
+								req.session.usuario = model;
 								res.redirect('/doar/index');
 							}
 						});
 					}
 				});
 			} else {
-				res.render('usuarios/create', {
+				req.session.usuario = data;
+				res.render('/doar/index', {
 					user: req.body
 				});
 			}

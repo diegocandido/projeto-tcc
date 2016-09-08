@@ -37,8 +37,9 @@ module.exports = function(app) {
 				if (err) {
 					res.render('/');
 				} else {
-					Usuario.findById(id, function(error, dados) {
-						console.log(dados);
+					Usuario.findOne({
+						'_id': id
+					}, function(error, dados) {
 						Doacao.findOne({
 								'_idusuario': id
 							},
@@ -51,7 +52,6 @@ module.exports = function(app) {
 										dados1: dados1
 									});
 								}
-								console.log(dados1);
 							});
 					});
 				}
