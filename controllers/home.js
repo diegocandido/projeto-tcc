@@ -15,6 +15,10 @@ module.exports = function(app) {
       res.render('home/sobre');
     },
 
+    obrigado: function(req, res) {
+      res.render('home/obrigado');
+    },
+
     comodoar: function(req, res) {
       res.render('home/comodoar');
     },

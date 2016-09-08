@@ -10,11 +10,13 @@ module.exports = function(req, res) {
 	req.assert('numero', 'Informe o Número da Casa/Prédio.').notEmpty();
 	req.assert('bairro', 'Informe o seu Bairro.').notEmpty();
 	req.assert('cep', 'Informe o seu Cep.').notEmpty();
+	req.assert('uf', 'Informe o seu Estado.').notEmpty();
 	req.assert('cidade', 'Informe o seu Cidade.').notEmpty();
+	req.assert('password_confirmar', 'Informe sua senha.').notEmpty();
 	if (createUrl) {
 		req.assert('email', 'E-mail inválido.').isEmail();
-		req.assert('password', 'Sua senha deve conter de 6 a 10 caracteres.')
-			.len(6, 10);
+		req.assert('password', 'Sua senha deve conter no minímo 6.')
+			.len(6, 200);
 	}
 
 	var validateErros = req.validationErrors() || [];

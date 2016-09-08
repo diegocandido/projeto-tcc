@@ -11,6 +11,9 @@ module.exports = function(app) {
 	app.route('/comodoar')
 		.get(home.comodoar);
 
+	app.route('/obrigado')
+		.get(home.obrigado);
+
 	app.route('/legislacao')
 		.get(home.legislacao);
 

@@ -20,7 +20,6 @@ module.exports = function(app) {
 					res.render('doar/index', {
 						lista: dados,
 						listar: dados2,
-						id: _id
 					});
 				});
 			});
@@ -110,6 +109,17 @@ module.exports = function(app) {
 						lista: dados
 					});
 				}
+			});
+		},
+		valor: function(req, res) {
+			var _id = req.params.id;
+			Entidade.findById(_id, function(err, dados) {
+				if (err) {
+					console.log(dados);
+				}
+				res.render('doar/valor', {
+					lista: dados
+				});
 			});
 		}
 	}

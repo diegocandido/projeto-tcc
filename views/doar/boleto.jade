@@ -2,13 +2,13 @@ extends ../layout
 
 block content
   div(class="jumbotron")
-    div(class="col-lg-6")
+    div(class="col-lg-8")
       h1 Parabéns!
-      h1 #{dados.nome}
-    div(class="col-lg-6")
-      h2 Você doou R$ #{dados1.valordoado}
-      p(class="lead") 
+      br
+      h2 Você doou R$ #{dados1.valordoado},00
+      p 
         | Para finalizar, clique abaixo, para gerar o boleto. 
+      p
         | Pague e aguardo as confirmações por e-mail.
       form(method="POST", action="http://www.iboleto.com.br/iboleto/iconnect/iconnect.php", role="form")
         input(type="hidden", class="form-control", name="nome", value="#{dados.nome}")
@@ -32,7 +32,9 @@ block content
         input(type="hidden", class="form-control", name="texto_email", value="1")
         input(type="hidden", class="form-control", name="valor_boleto", value="#{dados1.valordoado}")
         input(type="hidden", class="form-control", name="data_order", value="nome,email,senha,cpf_cnpj,ie_rg,empresa,endereco,bairro,cidade,estado,cep,telefone")
-        input(type="hidden", class="form-control", name="redir", value="http://www.terra.com.br")
-        input(type="hidden", class="form-control", name="descricao", value="Boleto gerado para doação e abatimento do Imposto de Renda. Usando como base a lei fiscal.")
-        button(type="submit", class="btn btn-success") Imprimir Boleto
+        input(type="hidden", class="form-control", name="redir", value="http://comdica.herokuapp.com/obrigado")
+        input(type="hidden", class="form-control", name="descricao", value="Boleto gerado para doacao e abatimento do Imposto de Renda. Usando como base a lei fiscal XXXX.")
+        button(type="submit", class="btn btn-success") Imprima o Boleto aqui!
+    div(class="col-lg-4")
+      img(src='../images/obrigado.jpg', class="img-circle img-responsive")
     

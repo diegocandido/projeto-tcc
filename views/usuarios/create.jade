@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-	h1 Cadastro de Usuários
+	h1 Cadastro
 	hr
 	br
 	if messages.erro
@@ -13,47 +13,46 @@ block content
 	form(method="POST", action="/usuarios/create", role="form")
 		div(class="form-group")
 			label Nome Complemento
-			input(type="text", class="form-control", name="nome", placeholder="Nome Completo", autofocus)
+			input(type="text", class="form-control", name="nome", placeholder="Nome Completo", value="#{user.nome || ''}", required)
 		div(class="form-group")
 			label CPF
-			input(type="text", class="form-control", name="cpf", id="cpf", placeholder="000.000.000-00", onblur="return verificarCPF(this.value)")
+			input(type="text", class="form-control", name="cpf", id="cpf", placeholder="00000000000", onblur="return verificarCPF(this.value)", value="#{user.cpf || ''}", required)
 		div(class="form-group")
 			label Telefone
-			input(type="text", class="form-control", name="telefone", placeholder="(00) 0000-0000")
+			input(type="text", class="form-control", name="telefone", placeholder="(00) 0000-0000", value="#{user.telefone || ''}", required)
 		div(class="form-group")
 			label Cep
-			input(type="text", class="form-control", name="cep", placeholder="00000-000", id="cep", size="10", maxlength="9")
+			input(type="text", class="form-control", name="cep", placeholder="00000000", id="cep", size="10", maxlength="9", value="#{user.cep || ''}", required)
 		div(class="form-group")
 			label Endereço
-			input(type="text", class="form-control", name="endereco", id="rua", placeholder="Rua/Avenida")
+			input(type="text", class="form-control", name="endereco", id="rua", placeholder="Rua/Avenida", value="#{user.endereco || ''}", required)
 		div(class="form-group")
 			label Número
-			input(type="text", class="form-control", name="numero", placeholder="000")
+			input(type="text", class="form-control", name="numero", placeholder="000", value="#{user.numero || ''}", required)
 		div(class="form-group")
 			label Complemento
 			input(type="text", class="form-control", name="complemento", value="" placeholder="Apto. X ou Casa X")
 		div(class="form-group")
 			label Bairro
-			input(type="text", class="form-control", name="bairro", id="bairro", placeholder="Bairro")
+			input(type="text", class="form-control", name="bairro", id="bairro", placeholder="Bairro", value="#{user.bairro || ''}", required)
 		div(class="form-group")
 			label Cidade
-			input(type="text", class="form-control", id="cidade", name="cidade", placeholder="Cidade")
+			input(type="text", class="form-control", id="cidade", name="cidade", placeholder="Cidade", value="#{user.cidade || ''}", required)
 		div(class="form-group")
 			label Estado
-			input(type="text", class="form-control", id="uf", name="uf", size="2", placeholder="RS")							
+			input(type="text", class="form-control", id="uf", name="uf", size="2", placeholder="RS", value="#{user.uf || ''}", required)					
 		div(class="form-group")
 			label E-mail
-			input(type="email", class="form-control", name="email", placeholder="E-mail")
+			input(type="email", class="form-control", name="email", placeholder="E-mail", value="#{user.email || ''}", required)
 		div(class="form-group")
 			label Senha
-			input(type="password", class="form-control", name="password", placeholder="Senha")
+			input(type="password", class="form-control", name="password", placeholder="Senha", required)
 		div(class="form-group")
 			label Confirmar Senha
-			input(type="password", class="form-control", name="password_confirmar", placeholder="Confirmar Senha")
-		button(type="submit", class="btn btn-success") Salvar
+			input(type="password", class="form-control", name="password_confirmar", placeholder="Confirmar Senha", value="#{user.password_confirmar || ''}" , required)
+		button(type="submit", class="btn btn-success") Cadastrar no sistema
 	br
 	br
-	a(href="/") Voltar
 
 block scripts
 	script(type="text/javascript").
@@ -104,4 +103,4 @@ block scripts
 			$('input[name="cep"]').mask('00000-000');
 			$('input[name="cpf"]').mask('000.000.000-00');
 			$('input[name="telefone"]').mask('(00) 0000-0000');
-});
+		});

@@ -38,6 +38,12 @@ module.exports = function() {
 			type: Number,
 			default: "0"
 		},
+		logo: {
+			type: String,
+		},
+		img: {
+			type: String,
+		},
 		data_cad: {
 			type: Date,
 			default: Date.now

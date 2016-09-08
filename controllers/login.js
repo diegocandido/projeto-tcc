@@ -30,7 +30,7 @@ module.exports = function(app) {
 						res.redirect('login');
 					} else {
 						req.session.usuario = data;
-						res.redirect('doar/index/' + data._id);
+						res.redirect('doar/index');
 					}
 				});
 			} else {

@@ -1,7 +1,7 @@
 extends ../layout
 
 block content
-	h1 Cadastro de Usuários
+	h1 Cadastro
 	hr
 	br
 	if messages.erro
@@ -24,9 +24,7 @@ block content
 			label Senha
 			input(type="password", class="form-control", name="password", placeholder="Senha", required)
 		div(class="form-group")
-			label Confirmar Senha
-			input(type="password", class="form-control", name="password_confirmar", placeholder="Confirmar Senha", required)
-		button(type="submit", class="btn btn-success") Salvar
+		button(type="submit", class="btn btn-success") Realizar Cadastro
 	br
 	br
 	a(href="/") Voltar

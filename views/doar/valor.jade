@@ -1,0 +1,73 @@
+extends ../layout
+
+block content
+	h1 Doações
+	br
+	a.btn.btn-primary(href='/usuarios/edit/#{session._id}', role='button') Alterar seu cadastro
+	br
+	br
+	div(class="alert alert-danger")
+		p Valor sem centavos e acima de R$ 10!
+	br
+	h2 2 PASSO: Informe o valor
+	br
+	br
+	form(method="POST", action="/doar/boleto", role="form")
+		table(class="table table-striped")
+			thead
+				tr
+					th
+					th Entidade:
+					th Valor:
+					th
+			tbody
+					tr
+						td
+							p #{lista.logo}
+						td 
+							p #{lista.nomedaentidade}
+							input(type="hidden", name="_identidades", value="#{lista.id}")
+							input(type="hidden", name="_idusuario", value="#{session._id}")
+							input(type="hidden", name="beneficiaria", value="#{lista.nomedaentidade}")
+						td
+							input(type="text", class="form-control input", name="valordoado", id="entrada")
+							p(id="saida")
+						td
+							button(type="submit", class="btn btn-success", id="somar") Fazer doação
+	br
+	br
+	div(class="row")
+		div(class="col-lg-2")
+		div(class="col-lg-8")
+			h4 Caso queira saber qual valor pode doar, utilize o simulador da Receita Federal:
+			a(href='http://www26.receita.fazenda.gov.br/irpfsimulaliq/private/pages/simuladoraliquota.jsf?tipoSimulador=M', target='_blank')
+				img(src='../../images/simulador.png', class="")
+		div(class="col-lg-2")
+
+block scripts
+	script(src="/js/jquery.mask.min.js")
+	script(type="text/javascript").
+		$(document).ready(function() {
+			$("#somar").click(function(){
+				var total = 0;
+					$('.input').each(function(){
+						var valor = Number($(this).val());
+							if (!isNaN(valor)) total += valor;
+						});
+						$("#resultado").val("R$ "+total.toFixed(2));
+					});
+		});
+	script(type="text/javascript").
+		$(function(){
+			$('input[name="valordoado"]').mask('00000');
+		});
+	script(type="text/javascript").
+		var X = 10;
+			$("#entrada").blur(function() {
+				var numero = parseInt($(this).val());
+					if (numero < X) {
+						$("#saida").html("Doação minima é R$ 10");
+					}
+			});
+		
+		

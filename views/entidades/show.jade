@@ -1,18 +1,14 @@
 extends ../layout
 
 block content
-	h1 #{dados.entidade}
-	hr
 	div(class="jumbotron")
 			h1 #{dados.nomedaentidade}
 			hr
 			div(class="col-lg-8")
-				iframe(width='560', height='285', src='https://www.youtube.com/embed/Ts2vjcjlbWY', frameborder='0', allowfullscreen='')
-				p #{dados.texto}
+				img(src='../img/#{dados.img}', class="img-rounded img-responsive")
+				p(class="text-justify") #{dados.texto}
 			div(class="col-lg-3")
-				img(src='../img/logo-larpadilha.jpg', class="img-rounded img-responsive")
-				br
-				h2 R$ #{dados.valortotal}
+				img(src='../img/#{dados.logo}', class="img-rounded img-responsive")
 				br
 				a(href="../login" class="btn btn-lg btn-success") Fazer doação
 				br

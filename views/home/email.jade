@@ -1,29 +1,12 @@
 extends ../layout
 
 block content
-	h2 Envio de E-mail
-	hr
-	if messages.erro
-		div(class="alert alert-danger")
-			each msg in messages.erro
-				b= msg
-				br
-		br
-	if messages.info
-		div(class="alert alert-success")
-			p #{messages.info}
-		br
-	form(method="POST", action="/email", role="form")
-		div(class="form-group")
-			label Nome
-			input(type="text", name="nome", class="form-control", placeholder="Nome", required)
-		div(class="form-group")
-			label E-mail
-			input(type="email", name="email", class="form-control", placeholder="E-mail", required)
-		div(class="form-group")
-			label Assunto
-			input(type="text", name="assunto", class="form-control", placeholder="Assunto", required)
-		div(class="form-group")
-			label Mensagem
-			textarea(rows="5", cols="5", class="form-control", name="mensagem", required)
-		button(class="btn btn-success", type="submit") Enviar
+	br
+	div(class="col-lg-4")
+		h2 Endereço
+		p Rua Tristão Monteiro, 1278, Centro
+		p Taquara, RS
+		p Elania: (51) 3541.9231
+		p E-mail: xxxx@gmail.com
+	div(class="col-lg-8")
+		iframe(src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3467.5415898344872!2d-50.783244785555176!3d-29.646054619819672!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x951919363b2a63e5%3A0xad765d00dd9558ab!2sPrefeitura+Municipal+de+Taquara!5e0!3m2!1spt-BR!2sbr!4v1473293443785", width="700", height="350", frameborder="0", style="border:0", allowfullscreen)

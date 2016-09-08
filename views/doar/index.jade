@@ -3,19 +3,8 @@ extends ../layout
 block content
 	h1 Doações
 	br
-	a.btn.btn-primary(href='/usuarios/edit/#{session._id}', role='button') Atualizar Dados »
+	a.btn.btn-primary(href='/usuarios/edit/#{session._id}', role='button') Alterar seu cadastro
 	br
-	br
-	if messages.erro
-		div(class="alert alert-danger")
-			p #{messages.erro}
-		br
-	if messages.info
-		div(class="alert alert-success")
-			p #{messages.info}
-		br
-	div(class="alert alert-danger")
-		p Valor sem centavos e acima de R$ 10!
 	if listar.length > 0
 		p Doações já realizadas
 			table(class="table table-striped")
@@ -38,60 +27,22 @@ block content
 								p R$ #{valor.valordoado}
 		br
 		br
-		p 
-
-
-
-
 	else
-		p Faça a sua doação:
-		form(method="POST", action="/doar/boleto", role="form")
-			table(class="table table-striped")
-				thead
-					tr
-						th Entidade:
-						th Valor:
-				tbody
-					each valor in lista
-						tr
-							td 
-								p #{valor.nomedaentidade}
-								input(type="hidden", name="_identidades", value="#{valor.id}")
-								input(type="hidden", name="_idusuario", value="#{session._id}")
-								input(type="hidden", name="beneficiaria", value="#{valor.nomedaentidade}")
-							td
-								input(type="text", class="form-control input", name="valordoado", id="entrada")
-								p(id="saida")
-							td
-								input(type="hidden", class="form-control input", id="resultado", name="valortotal")
-			button(type="submit", class="btn btn-success", id="somar") Fazer doação
-	br
-	br
-	a(href='http://www26.receita.fazenda.gov.br/irpfsimulaliq/private/pages/simuladoraliquota.jsf?tipoSimulador=M', target='_blank')
-		img(src='../../images/simulador.png')
+		h2 1 PASSO: Escolha uma entidade
+		div(class="row")
+			div(class="col-lg-4")
+				img(src='../img/logo-apae.jpg', class="img-rounded img-responsive")
+				h2 APAE
+					p(class="lead")
+					p
+						a.btn.btn-primary(href='valor/57c78803cd56860300830911', role='button') Doar para a entidade
+			div(class="col-lg-4")
+				img(src='../img/logo-larpadilha.jpg', class="img-rounded img-responsive")
+				h2 Lar Padilha
+					p(class="lead")
+					p
+						a.btn.btn-primary(href='valor/57cafb0d55ee4a2c0346774a', role='button') Doar para a entidade		
+			div(class="col-lg-4")
 
-block scripts
-	script(src="/js/jquery.mask.min.js")
-	script(type="text/javascript").
-		$(document).ready(function() {
-			$("#somar").click(function(){
-				var total = 0;
-					$('.input').each(function(){
-						var valor = Number($(this).val());
-							if (!isNaN(valor)) total += valor;
-						});
-						$("#resultado").val("R$ "+total.toFixed(2));
-					});
-		});
-	script(type="text/javascript").
-		$(function(){
-			$('input[name="valordoado"]').mask('00000');
-		});
-	script(type="text/javascript").
-		var X = 10;
-			$("#entrada").blur(function() {
-				var numero = parseInt($(this).val());
-					if (numero < X) {
-						$("#saida").html("Doação minima é R$ 10");
-					}
-			});
+		
+		
