@@ -12,7 +12,7 @@ block content
         | Pague e aguardo as confirmações por e-mail.
       form(method="POST", action="http://www.iboleto.com.br/iboleto/iconnect/iconnect.php", role="form")
         input(type="hidden", class="form-control", name="nome", value="#{dados.nome}")
-        input(type="hidden", class="form-control", name="nome", value="#{dados.cidade}")
+        input(type="hidden", class="form-control", name="email", value="#{dados.email}")
         input(type="hidden", class="form-control", name="cpf_cnpj", value="#{dados.cpf}")
         input(type="hidden", class="form-control", name="ie_rg", value="2067088928")
         input(type="hidden", class="form-control", name="empresa", value="Teste")
