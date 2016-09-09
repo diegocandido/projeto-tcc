@@ -39,6 +39,7 @@ module.exports = function(app) {
 				model.cidade = req.body.cidade;
 				model.email = req.body.email;
 				model.uf = req.body.uf;
+				model.valortotal = 0;
 				model.telefone = req.body.telefone;
 				model.password = model.generateHash(req.body.password);
 				Usuario.findOne({
@@ -56,10 +57,10 @@ module.exports = function(app) {
 								res.render('usuarios/create', {
 									user: req.body
 								});
-								console.log("Erro1");
 							} else {
+								var id = model._id;
 								req.session.usuario = model;
-								res.redirect('/doar/index');
+								res.redirect('/doar/index/' + id);
 							}
 						});
 					}

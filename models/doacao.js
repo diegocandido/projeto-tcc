@@ -18,6 +18,10 @@ module.exports = function() {
     valordoado: {
       type: Number
     },
+    validacao: {
+      type: Number,
+      default: 0
+    },
     data_doacao: {
       type: Date,
       default: Date.now

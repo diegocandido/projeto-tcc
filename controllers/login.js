@@ -20,7 +20,6 @@ module.exports = function(app) {
 				}, function(err, data) {
 					if (err) {
 						req.flash('erro', 'Erro ao entrar no sistema: ' + err);
-						res.redirect('login');
 					} else if (!data) {
 						req.flash('erro',
 							'E-mail não cadastrado, faça o cadastro abaixo!');
@@ -30,7 +29,7 @@ module.exports = function(app) {
 						res.redirect('login');
 					} else {
 						req.session.usuario = data;
-						res.redirect('doar/index');
+						res.redirect('doar/index/' + data._id);
 					}
 				});
 			} else {

@@ -21,7 +21,7 @@ mongoose.connect(
       console.log("Conexão com o mongodb efetuada com sucesso!");
     }
   });
-
+// mongodb://localhost/comdica2016
 var app = express();
 
 //middleware

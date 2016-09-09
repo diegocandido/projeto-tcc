@@ -9,8 +9,14 @@ head
 	link(rel="stylesheet", href="/css/style.css")
 body
 	div(class="container")
+		div(class="col-lg-9")
+			h2 Sistema de Doações
+		div(class="col-lg-3")
+			br
+			a.btn.btn-primary(href='/login', role='button') Acessar sistema
+	h4(class="text-muted")
+	div(class="container")
 		div(class="masthead")
-		h2 Sistema de Doações
 			h4(class="text-muted")
 				include partials/menu.jade
 			block content

@@ -6,5 +6,4 @@ module.exports = function(app) {
 	app.route('/doacoes').get(autenticar, doacao.lista);
 
 	app.route('/doacoes/confirmar/:doacao/:usuario/:valor').post(doacao.atualizar);
-
 }

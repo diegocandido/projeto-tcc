@@ -46,6 +46,7 @@ module.exports = function(app) {
       model.cidade = req.body.cidade;
       model.logo = req.body.logo;
       model.img = req.body.img;
+      model.valordoado = 0;
       model.save(function(err) {
         if (err) {
           req.flash('erro', 'Erro ao cadastrar: ' + err);

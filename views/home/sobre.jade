@@ -3,8 +3,8 @@ extends ../layout
 block content
 	div(class="jumbotron")
 		div(class="col-lg-8")
-			h2 Porque doar?
-			p(class="lead")
+			h2 Por que doar?
+			p(class="lead", class="text-justify")
 				| Os recursos provenientes das contribuições do IR asseguram à criança e ao adolescente o direito à vida, à saúde, à liberdade e à convivência familiar e comunitária, além de colocá-los a salvo de toda forma de negligência, discriminação, exploração, violência, crueldade e opressão.
 				br
 				br
@@ -12,7 +12,7 @@ block content
 					| Os valores destinados podem ser direcionados às instituições até 28 de dezembro.
 			p
 			br
-			p Faça uma simulação de quanto você pode doar, usando o sistema da Receita Federal do Brasil.
+			p(class="lead", class="text-justify") Faça uma simulação de quanto você pode doar, usando o sistema da Receita Federal do Brasil.
 			a(href='http://www26.receita.fazenda.gov.br/irpfsimulaliq/private/pages/simuladoraliquota.jsf?tipoSimulador=M', target='_blank')
 				img(src='../images/simulador.png')
 		div(class="col-lg-4")

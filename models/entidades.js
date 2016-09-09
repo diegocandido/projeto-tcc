@@ -8,41 +8,41 @@ module.exports = function() {
 			trim: true
 		},
 		telefone: {
-			type: String,
+			type: String
 		},
 		email: {
-			type: String,
+			type: String
 		},
 		site: {
-			type: String,
+			type: String
 		},
 		cnpj: {
-			type: String,
+			type: String
 		},
 		ie: {
-			type: String,
+			type: String
 		},
 		im: {
-			type: String,
+			type: String
 		},
 		cidade: {
-			type: String,
+			type: String
 		},
 		estado: {
-			type: String,
+			type: String
 		},
 		texto: {
-			type: String,
+			type: String
 		},
 		valortotal: {
 			type: Number,
 			default: "0"
 		},
 		logo: {
-			type: String,
+			type: String
 		},
 		img: {
-			type: String,
+			type: String
 		},
 		data_cad: {
 			type: Date,

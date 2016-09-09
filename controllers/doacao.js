@@ -20,6 +20,7 @@ module.exports = function(app) {
 					res.render('doar/index', {
 						lista: dados,
 						listar: dados2,
+						id: _id
 					});
 				});
 			});
@@ -78,25 +79,35 @@ module.exports = function(app) {
 			var _idusuario = req.params.usuario;
 			var valor = req.params.valor;
 			Usuario.findById(_idusuario, function(err, dados1) {
+				var total = Number(dados1.valortotal) + Number(valor);
 				var model1 = dados1;
-				model1.valortotal = valor;
+				model1.valortotal = total;
 				model1.save(function(err) {
 					if (err) {
-						console.log('Erro ao atualizar valor');
+						console.log('Erro Usuario');
 					}
-					console.log('Atualizar com sucesso valor');
 				});
 			});
 			Doacao.findById(_id, function(err, dados) {
+				var _identidade = dados._identidade;
 				var model = dados;
 				model.status = "Doação Confirmada";
+				model.validacao = "1";
 				model.save(function(err) {
 					if (err) {
-						res.json(400, 'Erro ao confirmar o valor: ' + err);
-						console.log('Erro');
+						console.log('Erro Doacao');
 					}
-					res.json(200, 'Valor confirmado com sucesso!');
-					console.log(valor);
+				});
+				Entidade.findById(_identidade, function(err, dados2) {
+					var model2 = dados2;
+					var totalentidades = Number(dados2.valortotal) + Number(valor);
+					model2.valortotal = totalentidades;
+					model2.save(function(err) {
+						if (err) {
+							res.json(400, 'Erro ao confirmar o valor: ' + err);
+						}
+						res.json(200, 'Valor confirmado com sucesso!');
+					});
 				});
 			});
 		},
@@ -120,6 +131,7 @@ module.exports = function(app) {
 				res.render('doar/valor', {
 					lista: dados
 				});
+				console.log(dados);
 			});
 		}
 	}
