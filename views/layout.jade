@@ -14,7 +14,14 @@ body
 		div(class="col-lg-3")
 			br
 			if isLogged
-				a.btn.btn-primary(href='/usuarios/edit/#{session._id}', role='button') Atualizar seus dados
+				b Olá, #{session.nome}
+				br
+				div(class="container")
+				a.btn.btn-info(href='/usuarios/edit/#{session._id}', role='button') Atualizar seus dados
+				&nbsp;
+				&nbsp;
+				&nbsp;
+				a.btn.btn-danger(href='/logout', role='button')[sair]
 			else
 				a.btn.btn-primary(href='/login', role='button') Acessar sistema
 	h4(class="text-muted")
