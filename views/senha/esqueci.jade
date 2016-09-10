@@ -1,0 +1,21 @@
+extends ../layout
+
+block content	
+	div(class="col-lg-6")
+		form(method="POST", action="/senha/esqueci", class="form-login")
+			h3 Esqueci minha senha
+			p Digite seu e-mail para que seja enviado uma nova senha.
+			if messages.erro
+				div(class="alert alert-danger")
+					p #{messages.erro}
+				br
+			if messages.info
+				div(class="alert alert-success")
+					p #{messages.info}
+			div(class="form-group")
+				label E-mail
+				input(type="email", class="form-control", name="email", required)
+			button(type="submit", class="btn btn-primary") Atualizar
+	div(class="col-lg-1")
+	div(class="col-lg-5")
+		img(src='../images/txt.jpg', class="img-circle img-responsive")

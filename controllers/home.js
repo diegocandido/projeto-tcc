@@ -25,12 +25,10 @@ module.exports = function(app) {
     legislacao: function(req, res) {
       res.render('home/legislacao');
     },
-
     logout: function(req, res) {
       req.session.destroy();
       res.redirect('/');
     },
-
     enviar: function(req, res) {
       var transport = nodemailer.createTransport("SMTP", {
         host: "smtp.mandrillapp.com",

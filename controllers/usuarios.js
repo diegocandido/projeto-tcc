@@ -138,8 +138,59 @@ module.exports = function(app) {
 					user: req.body
 				});
 			}
+		},
+		senha: function(req, res) {
+			Usuario.findById(req.params.id, function(err, data) {
+				var model = data;
+				var validasenha = model.validasenha;
+				model.save(function(err) {
+					if (validasenha == 1) {
+						res.render('senha/mudar', {
+							dados: data
+						});
+					} else {
+						res.redirect('/login');
+					}
+				});
+			});
+		},
+		atualizarsenha: function(req, res) {
+			Usuario.findById(req.params.id, function(err, data) {
+				var model = data;
+				model.validasenha = "0";
+				model.password = model.generateHash(req.body.senha);
+				model.save(function(err) {
+					if (err) {
+						console.log('Erro');
+					} else {
+						var id = model._id;
+						req.session.usuario = data;
+						res.redirect('/doar/index/' + id);
+					}
+				});
+			});
+		},
+		novasenha: function(req, res) {
+			var email = req.body.email;
+			Usuario.findOne({
+				'email': email
+			}, function(err, data) {
+				if (data) {
+					var model = data;
+					model.validasenha = "1";
+					model.password = model.generateHash("987654321");
+					model.save(function(err) {});
+					req.flash('info', 'Foi enviado uma nova senha para seu e-mail!');
+					res.render('senha/esqueci');
+				} else {
+					req.flash('erro', 'E-mail não encontrado.');
+					res.render('senha/esqueci');
+				}
+			});
+		},
+		esqueci: function(req, res) {
+			res.render('senha/esqueci');
 		}
 	}
-
 	return UsuarioController;
 }

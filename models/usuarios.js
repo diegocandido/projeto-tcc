@@ -56,6 +56,10 @@ module.exports = function() {
 			type: Number,
 			default: "0"
 		},
+		validasenha: {
+			type: Number,
+			default: "0"
+		},
 		data_cad: {
 			type: Date,
 			default: Date.now

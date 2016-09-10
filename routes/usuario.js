@@ -14,5 +14,12 @@ module.exports = function(app) {
 
 	app.route('/usuarios/edit/:id')
 		.get(autenticar, usuario.edit)
-		.post(usuario.update);
+		.post(autenticar, usuario.update);
+
+	app.route('/senha/mudar/:id')
+		.get(usuario.senha)
+		.post(usuario.atualizarsenha);
+
+	app.route('/senha/esqueci')
+		.post(usuario.novasenha).get(usuario.esqueci);
 }
