@@ -7,8 +7,8 @@ module.exports = function(app) {
       res.render('home/index');
     },
 
-    email: function(req, res) {
-      res.render('home/email');
+    doar: function(req, res) {
+      res.render('home/doar');
     },
 
     sobre: function(req, res) {

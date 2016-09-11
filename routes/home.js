@@ -17,9 +17,8 @@ module.exports = function(app) {
 	app.route('/legislacao')
 		.get(home.legislacao);
 
-	app.route('/email')
-		.get(home.email)
-		.post(home.enviar);
+	app.route('/doar')
+		.get(home.doar);
 
 	app.route('/logout').get(home.logout);
 }

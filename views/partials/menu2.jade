@@ -1,11 +1,13 @@
 ul(class="nav nav-justified")
-	li(class="active")
-		a(href="/home") Home
 	li
-		a(href="/amigos") Amigos
+		a(href="/") Home
 	li
-		a(href="/usuarios") Usuários
+		a(href="/sobre") Por que doar?
 	li
-		a(href="/email") Entrar em contato
+		a(href="/legislacao") Legislação
 	li
-		a(href="/logout") #{session.email} [sair]
+		a(href="/comodoar") Como doar
+	li
+		a(href="/email") Sobre
+	li
+		a(href="/doar/index/#{session._id}") Minhas doações

@@ -9,7 +9,8 @@ var express = require('express'),
   mongoose = require('mongoose'),
   flash = require('express-flash'),
   moment = require('moment'),
-  expressValidator = require('express-validator');
+  expressValidator = require('express-validator'),
+  nodemailer = require('nodemailer');
 
 //conexão com o mongodb
 mongoose.connect(

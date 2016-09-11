@@ -1,6 +1,18 @@
-module.exports = function(req, res) {
+var url = require('url');
 
-  req.assert('valordoado', 'Informe o valor').notEmpty();
+module.exports = function(req, res) {
+  var createUrl = url.parse(req.url).pathname == "/doar/boleto";
+  var updateUrl = !createUrl;
+
+  app.use(expressValidator({
+    customValidators: {
+      gte: function(param, num) {
+        return param >= num;
+      }
+    }
+  }));
+
+  req.checkQuery('erro', 'Preco precisa ser acima de R$ 10,00').gte(10)
 
   var validacoesErros = req.validationErrors() || [];
 

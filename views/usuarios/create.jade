@@ -12,17 +12,18 @@ block content
 		br
 	form(method="POST", action="/usuarios/create", role="form")
 		div(class="form-group")
-			label Nome Complemento
+			label Nome Completo
 			input(type="text", class="form-control", name="nome", placeholder="Nome Completo", value="#{user.nome || ''}", required)
 		div(class="form-group")
 			label CPF
 			input(type="text", class="form-control", name="cpf", id="cpf", placeholder="00000000000", onblur="return verificarCPF(this.value)", value="#{user.cpf || ''}", required)
+			b(id="saida")
 		div(class="form-group")
 			label Telefone
 			input(type="text", class="form-control", name="telefone", placeholder="(00) 0000-0000", value="#{user.telefone || ''}", required)
 		div(class="form-group")
 			label Cep
-			input(type="text", class="form-control", name="cep", placeholder="00000000", id="cep", size="10", maxlength="9", value="#{user.cep || ''}", required)
+			input(type="text", class="form-control", name="cep", placeholder="00000-000", id="cep", size="10", value="#{user.cep || ''}", required)
 		div(class="form-group")
 			label Endereço
 			input(type="text", class="form-control", name="endereco", id="rua", placeholder="Rua/Avenida", value="#{user.endereco || ''}", required)
@@ -50,7 +51,7 @@ block content
 		div(class="form-group")
 			label Confirmar Senha
 			input(type="password", class="form-control", name="password_confirmar", placeholder="Confirmar Senha", value="#{user.password_confirmar || ''}" , required)
-		button(type="submit", class="btn btn-success") Confirmar Cadastro
+		button(type="submit", class="btn btn-success", id="id-show") Confirmar Cadastro
 	br
 	br
 
@@ -101,4 +102,6 @@ block scripts
 	script(type="text/javascript").
 		$(function(){
 			$('input[name="cep"]').mask('00000-000');
+			$('input[name="cpf"]').mask('00000000000');
 		});
+	script(src="/js/validacpf.js")
