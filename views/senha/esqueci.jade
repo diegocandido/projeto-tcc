@@ -1,10 +1,14 @@
 extends ../layout
 
 block content	
+	div(class="col-lg-1")
 	div(class="col-lg-6")
 		form(method="POST", action="/senha/esqueci", class="form-login")
 			h3 Esqueci minha senha
+			br
+			br
 			p Digite seu e-mail para que seja enviado uma nova senha.
+			br
 			if messages.erro
 				div(class="alert alert-danger")
 					p #{messages.erro}
@@ -13,9 +17,15 @@ block content
 				div(class="alert alert-success")
 					p #{messages.info}
 			div(class="form-group")
-				label E-mail
-				input(type="number", class="form-control", name="cpf", required)
+				label Informe seu CPF abaixo:
+				input(type="text", class="form-control", name="cpf", id="cpf", placeholder="00000000000", required)
 			button(type="submit", class="btn btn-primary") Recuperar minha senha
-	div(class="col-lg-1")
-	div(class="col-lg-5")
+	div(class="col-lg-4")
 		img(src='../images/txt.jpg', class="img-circle img-responsive")
+	div(class="col-lg-1")
+block scripts
+	script(src="/js/jquery.mask.min.js")
+	script(type="text/javascript").
+		$(function(){
+			$('input[name="cpf"]').mask('00000000000');
+		});

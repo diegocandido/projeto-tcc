@@ -29,13 +29,16 @@ module.exports = function(app) {
       req.session.destroy();
       res.redirect('/');
     },
+    enviar2: function(req, res) {
+      res.render('home/contato');
+    },
     enviar: function(req, res) {
       var transport = nodemailer.createTransport("SMTP", {
-        host: "smtp.mandrillapp.com",
+        host: "smtp.gmail.com",
         port: 587,
         auth: {
-          user: "#",
-          pass: "#"
+          user: "diego@diegocandido.com",
+          pass: "Diego650121"
         }
       });
 

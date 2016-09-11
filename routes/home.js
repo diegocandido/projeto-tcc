@@ -20,5 +20,9 @@ module.exports = function(app) {
 	app.route('/doar')
 		.get(home.doar);
 
+	app.route('/contato')
+		.get(home.enviar2)
+		.post(home.enviar);
+
 	app.route('/logout').get(home.logout);
 }

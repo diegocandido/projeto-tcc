@@ -1,10 +1,14 @@
 extends ../layout
 
 block content	
+	div(class="col-lg-1")
 	div(class="col-lg-6")
 		form(method="POST", action="/senha/mudar/#{dados._id}", class="form-login")
 			h3 Atualizar Senha
+			br
+			br
 			p Preencha os campos necessários para acessar.
+			br
 			if messages.erro
 				br
 				div(class="alert alert-danger")
@@ -12,9 +16,10 @@ block content
 						b= msg
 						br
 			div(class="form-group")
-				label Nova Senha
-				input(type="password", class="form-control", placeholder="Senha", name="senha", required)
+				label Informe sua nova senha abaixo:
+				input(type="password", class="form-control", name="password", placeholder="Senha", required)
+				div(class="form-group")
 			button(type="submit", class="btn btn-primary") Atualizar
-	div(class="col-lg-1")
-	div(class="col-lg-5")
+	div(class="col-lg-4")
 		img(src='../../images/esp.jpg', class="img-circle img-responsive")
+	div(class="col-lg-1")

@@ -1149,7 +1149,11 @@ hr {
 	font-size:12px
 }
 p {
-	margin:0 0 10px
+	margin:0 0 10px;
+	font-family: "Open Sans",Helvetica,Arial,sans-serif;
+	font-size: 14px;
+	line-height: 1.42857143;
+	text-align: justify;
 }
 .lead {
 	margin-bottom:20px;
@@ -4244,8 +4248,10 @@ a.badge:focus,a.badge:hover {
 }
 .jumbotron p {
 	margin-bottom:15px;
-	font-size:21px;
-	font-weight:200
+	font-size:16px;
+	font-weight:200;
+	line-height: 1.42857143;
+	color: #424242;
 }
 .jumbotron>hr {
 	border-top-color:#d5d5d5

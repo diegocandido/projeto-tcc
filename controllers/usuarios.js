@@ -2,6 +2,7 @@ module.exports = function(app) {
 	var validacao = require('../validacoes/usuarios');
 	var Usuario = app.models.usuarios;
 	var Doacao = app.models.doacao;
+	var nodemailer = require('../node_modules/nodemailer');
 
 	var UsuarioController = {
 		index: function(req, res) {
@@ -171,16 +172,41 @@ module.exports = function(app) {
 			});
 		},
 		novasenha: function(req, res) {
-			var email = req.body.email;
+			var cpf = req.body.cpf;
 			Usuario.findOne({
-				'email': email
+				'cpf': cpf
 			}, function(err, data) {
 				if (data) {
 					var model = data;
 					model.validasenha = "1";
 					model.password = model.generateHash("987654321");
-					model.save(function(err) {});
-					req.flash('info', 'Foi enviado uma nova senha para seu e-mail!');
+					model.save(function(err) {
+						if (err) {} else {
+							var transport = nodemailer.createTransport("SMTP", {
+								host: "smtp.gmail.com",
+								port: 587,
+								auth: {
+									user: "diego@diegocandido.com",
+									pass: "Diego650121"
+								}
+							});
+							var mailOptions = {
+								from: "diego@diegocandido.com",
+								to: model.email + " <" + model.email + ">",
+								subject: "Esqueci minha senha",
+								html: '<b> Prezado(a),</b><br><br>Sua senha foi alterada para: 987654321<br><br>Para modificar a senha, <a href="http://www.destinair.com.br/esqueci">CLIQUE AQUI</a><br><br>Ficamos a disposição<br><br>Equipe Destina IR<br><br>',
+								alternatives: [{
+									contentType: 'text/x-web-markdown',
+									content: '**Hello world!**'
+								}]
+							}
+							transport.sendMail(mailOptions, function(err, response) {
+								if (err) {} else {}
+							});
+						}
+					});
+					req.flash('info', 'Foi enviado instruções para acessar: ' +
+						model.email);
 					res.render('senha/esqueci');
 				} else {
 					req.flash('erro', 'E-mail não encontrado.');

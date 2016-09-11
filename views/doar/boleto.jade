@@ -6,9 +6,9 @@ block content
       h1 Parabéns!
       br
       h2 Você doou R$ #{dados1.valordoado},00
-      p 
+      p(style="text-align:center")
         | Para finalizar, clique abaixo, para gerar o boleto. 
-      p
+      p(style="text-align:center")
         | Pague e aguardo as confirmações por e-mail.
       form(method="POST", action="http://www.iboleto.com.br/iboleto/iconnect/iconnect.php", role="form")
         input(type="hidden", class="form-control", name="nome", value="#{dados.nome}")
