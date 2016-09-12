@@ -2,7 +2,7 @@ extends ../layout
 
 block content	
 	div(class="col-lg-6")
-		form(method="POST", action="login", class="form-login")
+		form(method="POST", action="/login", class="form-login")
 			h3 Entrar no Sistema
 			p Preencha os campos necessários para acessar.
 			if messages.erro
@@ -17,8 +17,9 @@ block content
 			div(class="form-group")
 				label Senha
 				input(type="password", class="form-control", placeholder="Senha", name="password", required)
+				br
 				a(href="senha/esqueci") Esqueci minha senha
-			button(type="submit", class="btn btn-primary") Entrar
+			button(type="submit", class="btn btn-primary btn-block") Entrar
 	div(class="col-lg-6")
 		br
 		h3 Se cadastrar!

@@ -9,6 +9,7 @@ var express = require('express'),
   mongoose = require('mongoose'),
   flash = require('express-flash'),
   moment = require('moment'),
+  cookieSession = require('cookie-session'),
   expressValidator = require('express-validator');
 
 //conexão com o mongodb
@@ -38,7 +39,8 @@ app.use(bodyParser.urlencoded());
 app.use(expressValidator());
 app.use(cookieParser());
 app.use(session({
-  secret: 'a1'
+  secret: '~4132626',
+  name: 'sessionId',
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash());

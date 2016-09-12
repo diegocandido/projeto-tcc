@@ -27,11 +27,11 @@ body
 	h4(class="text-muted")
 	div(class="container")
 		div(class="masthead")
-			h4(class="text-muted")
-				if isLogged
-					include partials/menu2.jade
-				else
-					include partials/menu.jade
+			br
+			if isLogged
+				include partials/menu2.jade
+			else
+				include partials/menu.jade
 			block content
 			include partials/footer.jade
 	script(src="https://code.jquery.com/jquery-latest.min.js")

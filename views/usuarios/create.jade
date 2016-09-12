@@ -5,6 +5,7 @@ block content
 	hr
 	br
 	if messages.erro
+		br
 		div(class="alert alert-danger")
 			each msg in messages.erro
 				b= msg
