@@ -6,6 +6,7 @@ module.exports = function(req, res) {
 
 	req.assert('nome', 'Informe o seu Nome Completo.').notEmpty();
 	req.assert('cpf', 'Informe o seu CPF.').notEmpty();
+	req.assert('telefone', 'Informe o seu número de telefone.').notEmpty();
 	req.assert('endereco', 'Informe o seu Endereço.').notEmpty();
 	req.assert('numero', 'Informe o Número da Casa/Prédio.').notEmpty();
 	req.assert('bairro', 'Informe o seu Bairro.').notEmpty();

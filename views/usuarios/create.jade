@@ -25,6 +25,7 @@ block content
 		div(class="form-group")
 			label Cep
 			input(type="text", class="form-control", name="cep", placeholder="00000-000", id="cep", size="10", value="#{user.cep || ''}", required)
+			b(id="saidacep")
 		div(class="form-group")
 			label Endereço
 			input(type="text", class="form-control", name="endereco", id="rua", placeholder="Rua/Avenida", value="#{user.endereco || ''}", required)
@@ -85,17 +86,18 @@ block scripts
 									$("#ibge").val(dados.ibge);
 								} else {
 									limpa_formulário_cep();
-									alert("CEP não encontrado.");
+									$("#saidacep").html("CEP não encontrado.");
 								}
 				});
 			} //end if.
 				else {
 							limpa_formulário_cep();
-							alert("Formato de CEP inválido.");
+							$("#saidacep").html("Formato de CEP inválido");
 							}
 			} //end if.
 				else {
 							limpa_formulário_cep();
+							$("#saidacep").html("");
 							}
 			});
 		});
