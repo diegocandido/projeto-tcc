@@ -16,7 +16,6 @@ module.exports = function(app) {
 						res.render('usuarios/index', {
 							lista: dados
 						});
-						console.log(dados);
 					}
 				});
 		},
@@ -59,6 +58,27 @@ module.exports = function(app) {
 									user: req.body
 								});
 							} else {
+								var transport = nodemailer.createTransport("SMTP", {
+									host: "smtp.gmail.com",
+									port: 587,
+									auth: {
+										user: "diego@diegocandido.com",
+										pass: "Diego650121"
+									}
+								});
+								var mailOptions = {
+									from: "diego@diegocandido.com",
+									to: model.email + " <" + model.email + ">",
+									subject: "Destina IR: Cadastro Efetuado com Sucesso!",
+									html: '<b> Prezado(a),</b><br><br>Seu cadastro foi efetuado com SUCESSO!<br><br>Podemos começar, para efetuar sua doação <a href="https://comdica.herokuapp.com/login">CLIQUE AQUI</a><br><br>Caso deseje saber mais sobre o processo e o funcionamento <a href="https://comdica.herokuapp.com/legislacao">CLIQUE AQUI<br><br>Se desejar saber por que doar <a href="https://comdica.herokuapp.com/doar">CLIQUE AQUI <br><br>Ficamos a disposição<br><br>Equipe Destina IR<br><br>',
+									alternatives: [{
+										contentType: 'text/x-web-markdown',
+										content: '**Hello world!**'
+									}]
+								}
+								transport.sendMail(mailOptions, function(err, response) {
+									if (err) {} else {}
+								});
 								var id = model._id;
 								req.session.usuario = model;
 								res.redirect('/doar/index/' + id);
@@ -179,7 +199,7 @@ module.exports = function(app) {
 				if (data) {
 					var model = data;
 					model.validasenha = "1";
-					model.password = model.generateHash("987654321");
+					model.password = model.generateHash("987654");
 					model.save(function(err) {
 						if (err) {} else {
 							var transport = nodemailer.createTransport("SMTP", {
@@ -194,7 +214,7 @@ module.exports = function(app) {
 								from: "diego@diegocandido.com",
 								to: model.email + " <" + model.email + ">",
 								subject: "Esqueci minha senha",
-								html: '<b> Prezado(a),</b><br><br>Sua senha foi alterada para: 987654321<br><br>Para modificar a senha, <a href="http://www.destinair.com.br/esqueci">CLIQUE AQUI</a><br><br>Ficamos a disposição<br><br>Equipe Destina IR<br><br>',
+								html: '<b> Prezado(a),</b><br><br>Sua senha foi alterada para: 987654<br><br>Para modificar a senha, <a href="https://comdica.herokuapp.com/login">CLIQUE AQUI</a><br><br>Ficamos a disposição<br><br>Equipe Destina IR<br><br>',
 								alternatives: [{
 									contentType: 'text/x-web-markdown',
 									content: '**Hello world!**'

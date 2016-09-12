@@ -13,26 +13,24 @@ module.exports = function(app) {
 			var usuario = new Usuario();
 			var email = req.body.email;
 			var password = req.body.password;
-
 			if (validacao(req, res)) {
 				Usuario.findOne({
 					'email': email
 				}, function(err, data) {
 					if (err) {
 						req.flash('erro', 'Erro ao entrar no sistema: ' + err);
-						res.redirect('/');
-						console.log("Erro 1");
-					} else if (!data) {
-						req.flash('erro', 'E-mail não encontrado!');
 						res.redirect('/login');
-						console.log("Erro 2");
+					} else if (!data) {
+						req.flash('erro', 'E-mail não cadastrado!');
+						res.redirect('/usuarios/create/');
+					} else if (data.validasenha == 1) {
+						res.redirect('/senha/mudar/' + data._id);
 					} else if (!usuario.validPassword(password, data.password)) {
 						req.flash('erro', 'Senha não confere!');
 						res.redirect('/login');
-						console.log("Erro 3");
 					} else {
 						req.session.usuario = data;
-						res.redirect('/home');
+						res.redirect('/doar/index/' + data._id);
 					}
 				});
 			} else {
@@ -81,8 +79,6 @@ module.exports = function(app) {
 				});
 			}
 		}
-
 	}
-
 	return LoginController;
 }

@@ -40,5 +40,6 @@ function verificarCPF(c) {
   }
   if (!v) {
     $("#id-show").show("slow");
+    $("#saida").html("");
   }
 }

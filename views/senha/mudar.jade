@@ -1,6 +1,8 @@
 extends ../layout
 
 block content	
+	br
+	br
 	div(class="col-lg-1")
 	div(class="col-lg-6")
 		form(method="POST", action="/senha/mudar/#{dados._id}", class="form-login")
@@ -17,7 +19,7 @@ block content
 						br
 			div(class="form-group")
 				label Informe sua nova senha abaixo:
-				input(type="password", class="form-control", name="password", placeholder="Senha", required)
+				input(type="password", class="form-control", name="senha", placeholder="Senha", required)
 				div(class="form-group")
 			button(type="submit", class="btn btn-primary") Atualizar
 	div(class="col-lg-4")
