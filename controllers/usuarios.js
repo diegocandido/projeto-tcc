@@ -62,15 +62,15 @@ module.exports = function(app) {
 									host: "smtp.gmail.com",
 									port: 587,
 									auth: {
-										user: "diego@diegocandido.com",
+										user: "falecomadestinair@gmail.com",
 										pass: "Diego650121"
 									}
 								});
 								var mailOptions = {
-									from: "diego@diegocandido.com",
+									from: "falecomadestinair@gmail.com",
 									to: model.email + " <" + model.email + ">",
 									subject: "Destina IR: Cadastro Efetuado com Sucesso!",
-									html: '<b> Prezado(a),</b><br><br>Seu cadastro foi efetuado com SUCESSO!<br><br>Podemos começar, para efetuar sua doação <a href="https://comdica.herokuapp.com/login">CLIQUE AQUI</a><br><br>Caso deseje saber mais sobre o processo e o funcionamento <a href="https://comdica.herokuapp.com/legislacao">CLIQUE AQUI<br><br>Se desejar saber por que doar <a href="https://comdica.herokuapp.com/doar">CLIQUE AQUI <br><br>Ficamos a disposição<br><br>Equipe Destina IR<br><br>',
+									html: '<b> Prezado(a),</b><br><br>Seu cadastro foi efetuado com SUCESSO!<br><br>Podemos começar, para efetuar sua doação <a href="https://comdica.herokuapp.com/login">CLIQUE AQUI</a><br><br>Caso deseje saber mais sobre o processo e o funcionamento <a href="https://comdica.herokuapp.com/legislacao">CLIQUE AQUI</a><br><br>Se desejar saber por que doar <a href="https://comdica.herokuapp.com/doar">CLIQUE AQUI</a> <br><br>Ficamos a disposição<br><br>Equipe Destina IR<br><br>',
 									alternatives: [{
 										contentType: 'text/x-web-markdown',
 										content: '**Hello world!**'
@@ -213,7 +213,7 @@ module.exports = function(app) {
 							var mailOptions = {
 								from: "diego@diegocandido.com",
 								to: model.email + " <" + model.email + ">",
-								subject: "Esqueci minha senha",
+								subject: "Destina IR: Esqueci minha senha",
 								html: '<b> Prezado(a),</b><br><br>Sua senha foi alterada para: 987654<br><br>Para modificar a senha, <a href="https://comdica.herokuapp.com/login">CLIQUE AQUI</a><br><br>Ficamos a disposição<br><br>Equipe Destina IR<br><br>',
 								alternatives: [{
 									contentType: 'text/x-web-markdown',
