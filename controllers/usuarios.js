@@ -206,8 +206,8 @@ module.exports = function(app) {
 								host: "smtp.gmail.com",
 								port: 587,
 								auth: {
-									user: "diego@diegocandido.com",
-									pass: "Diego650121"
+									user: "",
+									pass: ""
 								}
 							});
 							var mailOptions = {
