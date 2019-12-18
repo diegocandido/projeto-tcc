@@ -63,7 +63,7 @@ module.exports = function(app) {
 									port: 587,
 									auth: {
 										user: "falecomadestinair@gmail.com",
-										pass: "Diego650121"
+										pass: ""
 									}
 								});
 								var mailOptions = {
