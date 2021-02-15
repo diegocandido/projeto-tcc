@@ -10,7 +10,7 @@
     "body-parser": "*",
     "cookie-parser": "*",
     "cookie-session": "^1.2.0",
-    "debug": "~0.7.4",
+    "debug": "~4.1.1",
     "express": "*",
     "express-flash": "0.0.2",
     "express-load": "~1.1.14",
