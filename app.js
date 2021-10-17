@@ -59,7 +59,7 @@ load('models').then('controllers').then('routes').into(app);
 //app.use(erros.notfound);
 //app.use(erros.serverError);
 
-var port = process.env.PORT || 5000
+var port = process.env.PORT || 8080
 
 app.listen(port, function() {
   console.log('Express server listening on port 5000');
