@@ -14,7 +14,7 @@ var express = require('express'),
 
 //conexão com o mongodb
 mongoose.connect(
-  'mongodb://diegocandido:650121@ds021694.mlab.com:21694/comdica2016',
+  'mongodb://diegocandido:password@ds021694.mlab.com:21694/comdica2016',
   function(err) {
     if (err) {
       console.log("Erro ao conectar no mongodb: " + err);
