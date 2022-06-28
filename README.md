@@ -1,5 +1,5 @@
 # Express 4
 
-Estrutura básica para trabalhar com o framework express na sua versão 4.
+Meu trabalho de conclusão de curso na Faculdade. Em 2016 o NodeJS ainda era algo muito desconhecido.
 
-Criado com base no módulo <a href="https://www.npmjs.org/package/express-generator">express-generator</a>
+Link do projeto rodando: https://comdica.herokuapp.com/
